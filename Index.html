@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Quantum Edge | Sovereign-Grade Strategic Intelligence</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Quantum Edge – discreet, high-trust strategic intelligence for HNWIs, Family Offices, and Institutional Investors." />
+  <style>
+    :root {
+      --bg: #050608;
+      --bg-alt: #0c0f13;
+      --card: #10141b;
+      --border-subtle: rgba(255, 255, 255, 0.05);
+      --accent: #d3aa5c;
+      --accent-soft: rgba(211, 170, 92, 0.18);
+      --text-main: #f5f5f5;
+      --text-muted: #a4abb6;
+      --text-soft: #7c8390;
+      --danger: #f25f5c;
+      --radius-lg: 18px;
+      --radius-xl: 26px;
+      --shadow-soft: 0 28px 80px rgba(0, 0, 0, 0.65);
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #131822 0, #050608 52%);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Layout */
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .shell {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(to bottom, rgba(5, 6, 8, 0.94), rgba(5, 6, 8, 0.75), transparent);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0 10px;
+      gap: 18px;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 999px;
+      border: 1px solid rgba(211, 170, 92, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 10% 0%, rgba(211,170,92,0.18) 0, transparent 52%);
+      box-shadow: 0 0 35px rgba(211, 170, 92, 0.3);
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 17px;
+      letter-spacing: 0.12em;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-name {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 15px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      color: var(--text-soft);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-soft);
+    }
+
+    .nav-links a {
+      padding-bottom: 4px;
+      border-bottom: 1px solid transparent;
+      transition: color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-main);
+      border-color: rgba(211, 170, 92, 0.6);
+      opacity: 0.9;
+    }
+
+    .nav-cta {
+      border-radius: 999px;
+      border: 1px solid rgba(211, 170, 92, 0.55);
+      padding: 7px 16px 8px;
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: radial-gradient(circle at top left, rgba(211, 170, 92, 0.2), transparent 55%);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+    }
+
+    .nav-cta span {
+      font-size: 14px;
+      transform: translateY(0.5px);
+    }
+
+    .nav-cta:hover {
+      background: radial-gradient(circle at top, rgba(211, 170, 92, 0.28), transparent 65%);
+      box-shadow: 0 0 28px rgba(211, 170, 92, 0.28);
+      transform: translateY(-1px);
+    }
+
+    main {
+      flex: 1;
+    }
+
+    section {
+      padding: 56px 0;
+    }
+
+    /* Hero */
+
+    .hero {
+      padding-top: 64px;
+      padding-bottom: 44px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+      gap: 40px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.24em;
+      color: var(--text-soft);
+      margin-bottom: 10px;
+    }
+
+    .hero-title {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: clamp(32px, 4.1vw, 42px);
+      line-height: 1.15;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .hero-title span {
+      color: var(--accent);
+    }
+
+    .hero-subtitle {
+      max-width: 520px;
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 26px;
+    }
+
+    .pill {
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 6px 12px;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: radial-gradient(circle at top, rgba(255,255,255,0.04), transparent 60%);
+    }
+
+    .pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 10px rgba(211, 170, 92, 0.7);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-soft);
+    }
+
+    .hero-meta strong {
+      display: block;
+      font-size: 13px;
+      color: var(--text-main);
+      margin-bottom: 2px;
+      letter-spacing: 0.12em;
+    }
+
+    .hero-card {
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at 0% -30%, rgba(211,170,92,0.18), transparent 60%), var(--card);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      box-shadow: var(--shadow-soft);
+      padding: 22px 22px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      border: 1px solid transparent;
+      background: radial-gradient(circle at 0 0, rgba(211, 170, 92, 0.35), transparent 55%);
+      opacity: 0.45;
+      mix-blend-mode: screen;
+      pointer-events: none;
+    }
+
+    .hero-card-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hc-label {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      margin-bottom: 14px;
+    }
+
+    .hc-main {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 16px;
+      line-height: 1.4;
+      margin-bottom: 18px;
+    }
+
+    .hc-main span {
+      color: var(--accent);
+    }
+
+    .hc-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      font-size: 11px;
+      color: var(--text-soft);
+    }
+
+    .hc-item strong {
+      display: block;
+      font-size: 12px;
+      color: var(--text-main);
+      margin-bottom: 2px;
+    }
+
+    .hc-seal {
+      position: absolute;
+      bottom: 18px;
+      right: 18px;
+      width: 70px;
+      height: 70px;
+      border-radius: 999px;
+      border: 1px solid rgba(211, 170, 92, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: rgba(211, 170, 92, 0.8);
+      backdrop-filter: blur(10px);
+      background: radial-gradient(circle at top, rgba(0,0,0,0.2), transparent 75%);
+    }
+
+    /* Sections */
+
+    .section-title {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 18px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .section-subtitle {
+      font-size: 13px;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin-bottom: 24px;
+    }
+
+    /* Pillars */
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .pillar-card {
+      border-radius: var(--radius-lg);
+      background: var(--bg-alt);
+      border: 1px solid var(--border-subtle);
+      padding: 16px 16px 18px;
+      min-height: 160px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pillar-tag {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      margin-bottom: 6px;
+    }
+
+    .pillar-title {
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .pillar-body {
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    .pillar-halo {
+      position: absolute;
+      inset: -40%;
+      opacity: 0.16;
+      background: radial-gradient(circle at 0 0, rgba(211, 170, 92, 0.6), transparent 55%);
+      pointer-events: none;
+    }
+
+    /* Services */
+
+    .services {
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      background: radial-gradient(circle at top, rgba(211,170,92,0.06), transparent 70%);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+      gap: 28px;
+      align-items: flex-start;
+    }
+
+    .service-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      font-size: 12px;
+      color: var(--text-soft);
+    }
+
+    .service-item {
+      border-radius: 12px;
+      border: 1px solid var(--border-subtle);
+      padding: 12px 13px;
+      background: rgba(6, 8, 12, 0.78);
+    }
+
+    .service-item strong {
+      display: block;
+      font-size: 12px;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .badge {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-soft);
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 4px 8px;
+      background: radial-gradient(circle at top, rgba(255,255,255,0.04), transparent 60%);
+    }
+
+    .services-card {
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--accent-soft);
+      background: radial-gradient(circle at 0 0, rgba(211,170,92,0.18), transparent 55%), var(--card);
+      padding: 18px 18px 16px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .sc-head {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .sc-main {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: 16px;
+      line-height: 1.45;
+      margin-bottom: 16px;
+    }
+
+    .sc-main span {
+      color: var(--accent);
+    }
+
+    .sc-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      font-size: 11px;
+      color: var(--text-soft);
+    }
+
+    .sc-metrics strong {
+      display: block;
+      font-size: 13px;
+      color: var(--text-main);
+    }
+
+    /* Insight quote */
+
+    .insight-quote {
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-subtle);
+      background: linear-gradient(135deg, rgba(10,12,18,0.96), rgba(5,6,8,0.98));
+      padding: 22px 20px 20px;
+      position: relative;
+      overflow: hidden;
+      margin-top: 10px;
+    }
+
+    .insight-quote::before {
+      content: "“";
+      position: absolute;
+      top: -34px;
+      left: 16px;
+      font-size: 80px;
+      color: rgba(211, 170, 92, 0.12);
+      font-family: "Georgia", "Times New Roman", serif;
+    }
+
+    .iq-body {
+      font-size: 13px;
+      color: var(--text-muted);
+      max-width: 680px;
+    }
+
+    .iq-body span {
+      color: var(--accent);
+    }
+
+    .iq-meta {
+      margin-top: 14px;
+      font-size: 11px;
+      color: var(--text-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    /* Contact */
+
+    .contact {
+      padding-top: 40px;
+      padding-bottom: 60px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 28px;
+      align-items: flex-start;
+    }
+
+    .contact-card {
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-subtle);
+      background: rgba(5, 6, 8, 0.95);
+      padding: 18px 18px 20px;
+    }
+
+    .contact-card h3 {
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 8px;
+    }
+
+    .contact-card p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+
+    .contact-meta {
+      font-size: 11px;
+      color: var(--text-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 8px;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--accent);
+      border-bottom: 1px solid rgba(211,170,92,0.6);
+      padding-bottom: 2px;
+    }
+
+    .contact-link span {
+      font-size: 14px;
+    }
+
+    .contact-note {
+      font-size: 11px;
+      color: var(--text-soft);
+      margin-top: 10px;
+      max-width: 320px;
+    }
+
+    .contact-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .contact-tag {
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      padding: 5px 10px;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+    }
+
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 16px 0 26px;
+      font-size: 11px;
+      color: var(--text-soft);
+    }
+
+    .footer-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      justify-content: space-between;
+    }
+
+    .footer-inner span {
+      opacity: 0.9;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .footer-links a {
+      opacity: 0.8;
+    }
+
+    .footer-links a:hover {
+      opacity: 1;
+      color: var(--accent);
+    }
+
+    /* Responsive */
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .services-grid,
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        padding-top: 40px;
+      }
+
+      header {
+        backdrop-filter: blur(14px);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .nav-links {
+        display: none;
+      }
+
+      .pillars-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-card {
+        margin-top: 6px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      section {
+        padding: 42px 0;
+      }
+
+      .hero {
+        padding-top: 34px;
+      }
+
+      .hero-title {
+        font-size: 28px;
+      }
+
+      .hc-seal {
+        width: 60px;
+        height: 60px;
+        bottom: 14px;
+        right: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- Header -->
+    <header>
+      <div class="shell">
+        <nav class="nav">
+          <div class="nav-left">
+            <div class="brand-mark">QE</div>
+            <div class="brand-text">
+              <div class="brand-name">Quantum Edge</div>
+              <div class="brand-sub">Strategic Intelligence</div>
+            </div>
+          </div>
+          <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#model">Framework</a>
+            <a href="#mandates">Mandates</a>
+            <a href="#contact">Access</a>
+          </div>
+          <a href="#contact" class="nav-cta">
+            PRIVATE ACCESS
+            <span>↗</span>
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="hero" id="top">
+        <div class="shell">
+          <div class="hero-grid">
+            <div>
+              <div class="eyebrow"> Discreet macro & digital asset</div>
+                <div class="eyebrow">Mr. Paul Singh, Founder - Director
+                   Chief Asymmetric Strategy Architect (CASA)</div>
+              <h1 class="hero-title">
+                Sovereign-grade insight<br />
+                for <span>asymmetric capital</span>
+              </h1>
+              <p class="hero-subtitle">
+                Quantum Intellectual Thinking navigating Bitcoin, digital assets, and macro regimes using non-linear reasoning, behavioral signals, and deep risk intelligence.
+              </p>
+
+              <div class="hero-pills">
+                <div class="pill">
+                  <div class="pill-dot"></div>
+                  Intelligence Perspective
+                </div>
+                <div class="pill">
+                  <div class="pill-dot"></div>
+                  Multi-asset, crypto-native intelligence
+                </div>
+                <div class="pill">
+                  <div class="pill-dot"></div>
+                  Narrative, flow & structure alignment
+                </div>
+              </div>
+
+              <div class="hero-meta">
+                <div>
+                  <strong>Mandate</strong>
+                  Strategic advisory across Bitcoin, digital assets, macro & liquidity regimes.
+                </div>
+                <div>
+                  <strong>Operating Style</strong>
+                  Early pattern recognition. Quiet positioning. Institutional discipline.
+                </div>
+              </div>
+            </div>
+
+            <aside class="hero-card">
+              <div class="hero-card-inner">
+                <div class="hc-label">Quantum Edge Working Model</div>
+                <div class="hc-main">
+                  Where others see <span>volatility</span>, we see the architecture of
+                  <span>regime change</span>.
+                </div>
+                <div class="hc-grid">
+                  <div class="hc-item">
+                    <strong>Asymmetry Engine</strong>
+                    Identifies non-linear payoff zones across BTC, ETH, SOL, stablecoins & macro.
+                  </div>
+                  <div class="hc-item">
+                    <strong>Risk Cartography</strong>
+                    Maps liquidity, leverage, and regulatory stress to build sovereign-grade resilience.
+                  </div>
+                  <div class="hc-item">
+                    <strong>Perception Layer</strong>
+                    Tracks sentiment dislocations between retail narratives and institutional flow.
+                  </div>
+                  <div class="hc-item">
+                    <strong>Timing Lens</strong>
+                    Focuses on second-order effects where consensus arrives last and returns are made.
+                  </div>
+                </div>
+                <div class="hc-seal">
+                  QUIET
+                  <br />
+                  ADVANTAGE
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pillars -->
+      <section id="about">
+        <div class="shell">
+          <h2 class="section-title">Strategic Pillars</h2>
+          <p class="section-subtitle">
+            Quantum Edge operates at the intersection of macro, digital assets, and human behavior. The mandate is simple: protect and compound sophisticated capital through structural clarity, not noise.
+          </p>
+
+          <div class="pillars-grid">
+            <article class="pillar-card">
+              <div class="pillar-halo"></div>
+              <div class="pillar-tag">01 · Strategic Asymmetry</div>
+              <div class="pillar-title">Edges where others see failure</div>
+              <p class="pillar-body">
+                We treat slow Bitcoin, high ETH gas, congested Solana and fragile stablecoins not as flaws, but as signal-rich stress points. Asymmetry appears where infrastructure strain meets structural adoption.
+              </p>
+            </article>
+
+            <article class="pillar-card">
+              <div class="pillar-tag">02 · Timing & Second-Order Effects</div>
+              <div class="pillar-title">Positioning before the narrative</div>
+              <p class="pillar-body">
+                We don’t chase “what just happened.” We map how liquidity, regulation, and institutional flows will react next and how those reactions will be mispriced by conventional models.
+              </p>
+            </article>
+
+            <article class="pillar-card">
+              <div class="pillar-tag">03 · Psychology of Capital</div>
+              <div class="pillar-title">Understanding how money feels</div>
+              <p class="pillar-body">
+                HNWI, Family Offices, and Institutions don’t move on spreadsheets alone. They move on fear, pride, reputational risk and opportunity cost. We translate this psychology into positioning decisions.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Framework / Model -->
+      <section id="model" class="services">
+        <div class="shell">
+          <h2 class="section-title">Quantum Edge Framework</h2>
+          <p class="section-subtitle">
+            A working model designed for sovereign funds and serious allocators: one that integrates macro, digital assets, and behavioral signals into a single, coherent decision architecture.
+          </p>
+
+          <div class="services-grid">
+            <div>
+              <div class="service-list">
+                <div class="service-item">
+                  <strong>Multi-Layer Market Map</strong>
+                  <p>
+                    Bitcoin as apex collateral. Ethereum as settlement & structure. Solana & BNB as execution rails. Stablecoins and USDT risk as liquidity weather.
+                  </p>
+                  <div class="badge-row">
+                    <span class="badge">BTC / ETH / SOL / BNB</span>
+                    <span class="badge">STABLECOIN RISK</span>
+                  </div>
+                </div>
+
+                <div class="service-item">
+                  <strong>Flow & Fragility Monitor</strong>
+                  <p>
+                    Tracks ETF flows, options skew, futures funding, OI resets, and on-chain liquidity to detect when markets shift from trend to fragility or from panic to opportunity.
+                  </p>
+                  <div class="badge-row">
+                    <span class="badge">ETF & OI</span>
+                    <span class="badge">VOL SURFACES</span>
+                    <span class="badge">REGIME SHIFTS</span>
+                  </div>
+                </div>
+
+                <div class="service-item">
+                  <strong>Sentiment & Narrative Diagnostics</strong>
+                  <p>
+                    Identifies when headlines, social narratives, and analyst commentary diverge from structural flows—a fertile zone for asymmetric entries and exits.
+                  </p>
+                  <div class="badge-row">
+                    <span class="badge">PERCEPTION vs REALITY</span>
+                    <span class="badge">DISLOCATION</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <aside class="services-card">
+              <div class="sc-head">Designed for sovereign-grade capital</div>
+              <div class="sc-main">
+                The objective is not to be early in every move, but to be
+                <span>decisively right</span> when the architecture of the cycle changes.
+              </div>
+              <div class="sc-metrics">
+                <div>
+                  <strong>Focus</strong>
+                  Regimes, not headlines. Liquidity, not anecdotes. Structure, not noise.
+                </div>
+                <div>
+                  <strong>Style</strong>
+                  Quiet presence. Minimal exposure. Maximum clarity for those who need it.
+                </div>
+              </div>
+            </aside>
+          </div>
+
+          <div class="insight-quote">
+            <p class="iq-body">
+              In a world where Bitcoin can crash on leverage, Ethereum can price out small users, Solana can congest, and stablecoins can wobble under reserve risk, <span>the edge is not choosing a winner</span>—it is engineering a sovereign routing strategy across all of them.
+            </p>
+            <div class="iq-meta">Quantum Edge · Macro & Digital Asset View</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Mandates -->
+      <section id="mandates">
+        <div class="shell">
+          <h2 class="section-title">Advisory Mandates</h2>
+          <p class="section-subtitle">
+            Engagements are selective, bespoke, and designed to complement existing CIO, investment committee, and risk teams not to replace them.
+          </p>
+
+          <div class="pillars-grid">
+            <article class="pillar-card">
+              <div class="pillar-tag">01 · Strategic Counsel</div>
+              <div class="pillar-title">Boardroom-level macro & crypto guidance</div>
+              <p class="pillar-body">
+                Discreet sounding board for sovereign funds, family offices, and institutional allocators considering or expanding digital asset and Bitcoin exposure.
+              </p>
+            </article>
+            <article class="pillar-card">
+              <div class="pillar-tag">02 · Regime & Risk Mapping</div>
+              <div class="pillar-title">From event risk to structural understanding</div>
+              <p class="pillar-body">
+                Translating regulatory shocks, ETF flows, stablecoin stress, and cross-asset volatility into a coherent, cycle-aware capital allocation framework.
+              </p>
+            </article>
+            <article class="pillar-card">
+              <div class="pillar-tag">03 · Discreet Research & Briefings</div>
+              <div class="pillar-title">Private notes for serious capital</div>
+              <p class="pillar-body">
+                Tailored, high-signal briefings that reduce complexity into a few clear, defensible decisions delivered quietly, with no marketing footprint.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="contact">
+        <div class="shell">
+          <h2 class="section-title">Private Access</h2>
+          <p class="section-subtitle">
+            Quantum Edge is not a mass-market service. Access is limited and prioritised for long-horizon, aligned capital seeking structural clarity in an increasingly non-linear world.
+          </p>
+
+          <div class="contact-grid">
+            <div class="contact-card">
+              <h3>Discreet Enquiries</h3>
+              <p>
+                For HNWIs, Family Offices, institutional desks, and sovereign-linked entities exploring strategic advisory or bespoke intelligence, initial contact can be made via encrypted email.
+              </p>
+              <div class="contact-meta">Primary channel</div>
+              <a href="mailto:cal49a@protonmail.com" class="contact-link">
+                Contact: Cal49a@pm.me
+                <span>↗</span>
+              </a>
+              <p class="contact-note">
+                Please include only high-level context. Detailed materials, if appropriate, can follow under mutual NDA and preferred secure channels.
+              </p>
+              <div class="contact-tags">
+                <div class="contact-tag">BITCOIN & DIGITAL ASSETS</div>
+                <div class="contact-tag">MACRO & LIQUIDITY</div>
+                <div class="contact-tag">RISK ARCHITECTURE</div>
+                <div class="contact-tag">FAMILY OFFICE / SOVEREIGN</div>
+              </div>
+            </div>
+
+            <div>
+              <div class="contact-meta">Engagement philosophy</div>
+              <p style="font-size:13px; color:var(--text-muted); margin-bottom:10px;">
+                Fewer relationships, deeper context, higher trust. The objective is not to predict every move, but to prevent unforced errors and position into structural opportunity before it becomes consensus.
+              </p>
+              <p style="font-size:12px; color:var(--text-soft);">
+                Capital that survives the next regime will be that which understands how Bitcoin, stablecoins, AI, regulation, and human behavior intersect. Quantum Edge exists to read that intersection early—and quietly.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="shell">
+        <div class="footer-inner">
+          <span>© <span id="year"></span> Quantum Edge · All Rights Reserved</span>
+          <div class="footer-links">
+            <a href="#top">Back to top</a>
+            <a href="#model">Framework</a>
+            <a href="#contact">Private Access</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Set current year in footer
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+```0
