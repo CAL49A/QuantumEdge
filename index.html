@@ -17,6 +17,9 @@
       --text-muted: #a4abb6;
       --text-soft: #7c8390;
       --danger: #f25f5c;
+      --bull: #4cc38a;
+      --bear: #ff6b6b;
+      --neutral: #f6c453;
       --radius-lg: 18px;
       --radius-xl: 26px;
       --shadow-soft: 0 28px 80px rgba(0, 0, 0, 0.65);
@@ -52,8 +55,6 @@
       height: auto;
       display: block;
     }
-
-    /* Layout */
 
     .page {
       min-height: 100vh;
@@ -202,7 +203,7 @@
       text-transform: uppercase;
       letter-spacing: 0.24em;
       color: var(--text-soft);
-      margin-bottom: 10px;
+      margin-bottom: 6px;
     }
 
     .hero-title {
@@ -352,8 +353,6 @@
       background: radial-gradient(circle at top, rgba(0,0,0,0.2), transparent 75%);
     }
 
-    /* Sections */
-
     .section-title {
       font-family: "Georgia", "Times New Roman", serif;
       font-size: 18px;
@@ -368,8 +367,6 @@
       max-width: 520px;
       margin-bottom: 24px;
     }
-
-    /* Pillars */
 
     .pillars-grid {
       display: grid;
@@ -412,8 +409,6 @@
       background: radial-gradient(circle at 0 0, rgba(211, 170, 92, 0.6), transparent 55%);
       pointer-events: none;
     }
-
-    /* Services */
 
     .services {
       border-top: 1px solid var(--border-subtle);
@@ -507,8 +502,6 @@
       color: var(--text-main);
     }
 
-    /* Insight quote */
-
     .insight-quote {
       border-radius: var(--radius-xl);
       border: 1px solid var(--border-subtle);
@@ -546,8 +539,6 @@
       text-transform: uppercase;
       letter-spacing: 0.18em;
     }
-
-    /* Contact */
 
     .contact {
       padding-top: 40px;
@@ -661,7 +652,263 @@
       color: var(--accent);
     }
 
-    /* Responsive */
+    /* Floating Intelligence Dock */
+
+    .news-dock {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 360px;
+      max-height: 72vh;
+      background: rgba(5, 6, 8, 0.98);
+      border-radius: 20px;
+      border: 1px solid rgba(211,170,92,0.35);
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.85);
+      display: flex;
+      flex-direction: column;
+      backdrop-filter: blur(12px);
+      z-index: 60;
+      overflow: hidden;
+      font-size: 12px;
+    }
+
+    .news-dock-header {
+      padding: 10px 14px 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .news-dock-title {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .news-dock-title-main {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+    }
+
+    .news-dock-title-sub {
+      font-size: 11px;
+      color: var(--text-soft);
+    }
+
+    .news-dock-controls {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dock-pill {
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.09);
+      padding: 4px 8px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--text-soft);
+      background: rgba(10, 12, 18, 0.94);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .dock-pill.active {
+      border-color: rgba(211,170,92,0.7);
+      color: var(--accent);
+      background: radial-gradient(circle at top, rgba(211,170,92,0.18), transparent 65%);
+    }
+
+    .dock-toggle {
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.09);
+      padding: 2px;
+      display: flex;
+      gap: 2px;
+      background: rgba(10,12,18,0.96);
+    }
+
+    .dock-toggle button {
+      border: none;
+      background: transparent;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      padding: 4px 6px;
+      color: var(--text-soft);
+      border-radius: 999px;
+      cursor: pointer;
+    }
+
+    .dock-toggle button.active {
+      background: radial-gradient(circle at top, rgba(211,170,92,0.2), transparent 70%);
+      color: var(--accent);
+    }
+
+    .dock-body {
+      padding: 10px 10px 10px;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .dock-footer {
+      padding: 6px 10px 8px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 10px;
+      color: var(--text-soft);
+    }
+
+    .dock-footer span {
+      opacity: 0.9;
+    }
+
+    .news-item {
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(10,12,18,0.96);
+      padding: 10px 10px 9px;
+      margin-bottom: 8px;
+    }
+
+    .news-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 5px;
+    }
+
+    .news-source {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-soft);
+    }
+
+    .news-metadata {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+    }
+
+    .sentiment-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      border-radius: 999px;
+      padding: 2px 7px;
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      border: 1px solid rgba(255,255,255,0.12);
+    }
+
+    .sentiment-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+    }
+
+    .sentiment-bull {
+      border-color: rgba(76,195,138,0.5);
+      color: var(--bull);
+    }
+    .sentiment-bull .sentiment-dot {
+      background: var(--bull);
+      box-shadow: 0 0 10px rgba(76,195,138,0.5);
+    }
+
+    .sentiment-bear {
+      border-color: rgba(255,107,107,0.5);
+      color: var(--bear);
+    }
+    .sentiment-bear .sentiment-dot {
+      background: var(--bear);
+      box-shadow: 0 0 10px rgba(255,107,107,0.5);
+    }
+
+    .sentiment-neutral {
+      border-color: rgba(246,196,83,0.5);
+      color: var(--neutral);
+    }
+    .sentiment-neutral .sentiment-dot {
+      background: var(--neutral);
+      box-shadow: 0 0 10px rgba(246,196,83,0.5);
+    }
+
+    .news-title {
+      font-size: 12px;
+      margin-bottom: 4px;
+      color: var(--text-main);
+    }
+
+    .news-summary {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .news-link {
+      font-size: 10px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      border-bottom: 1px solid rgba(211,170,92,0.4);
+      display: inline-flex;
+      gap: 4px;
+      align-items: center;
+    }
+
+    .news-tag-asset {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-soft);
+      opacity: 0.8;
+      margin-top: 2px;
+    }
+
+    .dock-collapse-btn {
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.13);
+      background: rgba(5,6,8,0.95);
+      color: var(--text-soft);
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      padding: 3px 7px;
+      cursor: pointer;
+    }
+
+    .news-dock-minimized {
+      height: 32px;
+      max-height: 32px;
+      overflow: hidden;
+    }
+
+    .dock-minimized-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 10px;
+      font-size: 10px;
+      gap: 8px;
+    }
+
+    .dock-minimized-bar span {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+    }
 
     @media (max-width: 900px) {
       .hero-grid,
@@ -676,6 +923,13 @@
 
       header {
         backdrop-filter: blur(14px);
+      }
+
+      .news-dock {
+        right: 10px;
+        bottom: 10px;
+        width: calc(100% - 20px);
+        max-width: 420px;
       }
     }
 
@@ -711,6 +965,12 @@
         height: 60px;
         bottom: 14px;
         right: 14px;
+      }
+
+      .news-dock {
+        width: calc(100% - 16px);
+        right: 8px;
+        bottom: 8px;
       }
     }
   </style>
@@ -748,9 +1008,8 @@
         <div class="shell">
           <div class="hero-grid">
             <div>
-              <div class="eyebrow"> Discreet macro & digital asset</div>
-                <div class="eyebrow">Mr. Paul Singh, Founder - Director
-                   Chief Asymmetric Strategy Architect (CASA)</div>
+              <div class="eyebrow">Discreet macro &amp; digital asset</div>
+              <div class="eyebrow">Mr. Paul Singh, Founder - Director · Chief Asymmetric Strategy Architect (CASA)</div>
               <h1 class="hero-title">
                 Sovereign-grade insight<br />
                 for <span>asymmetric capital</span>
@@ -770,14 +1029,14 @@
                 </div>
                 <div class="pill">
                   <div class="pill-dot"></div>
-                  Narrative, flow & structure alignment
+                  Narrative, flow &amp; structure alignment
                 </div>
               </div>
 
               <div class="hero-meta">
                 <div>
                   <strong>Mandate</strong>
-                  Strategic advisory across Bitcoin, digital assets, macro & liquidity regimes.
+                  Strategic advisory across Bitcoin, digital assets, macro &amp; liquidity regimes.
                 </div>
                 <div>
                   <strong>Operating Style</strong>
@@ -796,7 +1055,7 @@
                 <div class="hc-grid">
                   <div class="hc-item">
                     <strong>Asymmetry Engine</strong>
-                    Identifies non-linear payoff zones across BTC, ETH, SOL, stablecoins & macro.
+                    Identifies non-linear payoff zones across BTC, ETH, SOL, stablecoins &amp; macro.
                   </div>
                   <div class="hc-item">
                     <strong>Risk Cartography</strong>
@@ -841,7 +1100,7 @@
             </article>
 
             <article class="pillar-card">
-              <div class="pillar-tag">02 · Timing & Second-Order Effects</div>
+              <div class="pillar-tag">02 · Timing &amp; Second-Order Effects</div>
               <div class="pillar-title">Positioning before the narrative</div>
               <p class="pillar-body">
                 We don’t chase “what just happened.” We map how liquidity, regulation, and institutional flows will react next and how those reactions will be mispriced by conventional models.
@@ -873,7 +1132,7 @@
                 <div class="service-item">
                   <strong>Multi-Layer Market Map</strong>
                   <p>
-                    Bitcoin as apex collateral. Ethereum as settlement & structure. Solana & BNB as execution rails. Stablecoins and USDT risk as liquidity weather.
+                    Bitcoin as apex collateral. Ethereum as settlement &amp; structure. Solana &amp; BNB as execution rails. Stablecoins and USDT risk as liquidity weather.
                   </p>
                   <div class="badge-row">
                     <span class="badge">BTC / ETH / SOL / BNB</span>
@@ -882,19 +1141,19 @@
                 </div>
 
                 <div class="service-item">
-                  <strong>Flow & Fragility Monitor</strong>
+                  <strong>Flow &amp; Fragility Monitor</strong>
                   <p>
                     Tracks ETF flows, options skew, futures funding, OI resets, and on-chain liquidity to detect when markets shift from trend to fragility or from panic to opportunity.
                   </p>
                   <div class="badge-row">
-                    <span class="badge">ETF & OI</span>
+                    <span class="badge">ETF &amp; OI</span>
                     <span class="badge">VOL SURFACES</span>
                     <span class="badge">REGIME SHIFTS</span>
                   </div>
                 </div>
 
                 <div class="service-item">
-                  <strong>Sentiment & Narrative Diagnostics</strong>
+                  <strong>Sentiment &amp; Narrative Diagnostics</strong>
                   <p>
                     Identifies when headlines, social narratives, and analyst commentary diverge from structural flows—a fertile zone for asymmetric entries and exits.
                   </p>
@@ -929,7 +1188,7 @@
             <p class="iq-body">
               In a world where Bitcoin can crash on leverage, Ethereum can price out small users, Solana can congest, and stablecoins can wobble under reserve risk, <span>the edge is not choosing a winner</span>—it is engineering a sovereign routing strategy across all of them.
             </p>
-            <div class="iq-meta">Quantum Edge · Macro & Digital Asset View</div>
+            <div class="iq-meta">Quantum Edge · Macro &amp; Digital Asset View</div>
           </div>
         </div>
       </section>
@@ -945,20 +1204,20 @@
           <div class="pillars-grid">
             <article class="pillar-card">
               <div class="pillar-tag">01 · Strategic Counsel</div>
-              <div class="pillar-title">Boardroom-level macro & crypto guidance</div>
+              <div class="pillar-title">Boardroom-level macro &amp; crypto guidance</div>
               <p class="pillar-body">
                 Discreet sounding board for sovereign funds, family offices, and institutional allocators considering or expanding digital asset and Bitcoin exposure.
               </p>
             </article>
             <article class="pillar-card">
-              <div class="pillar-tag">02 · Regime & Risk Mapping</div>
+              <div class="pillar-tag">02 · Regime &amp; Risk Mapping</div>
               <div class="pillar-title">From event risk to structural understanding</div>
               <p class="pillar-body">
                 Translating regulatory shocks, ETF flows, stablecoin stress, and cross-asset volatility into a coherent, cycle-aware capital allocation framework.
               </p>
             </article>
             <article class="pillar-card">
-              <div class="pillar-tag">03 · Discreet Research & Briefings</div>
+              <div class="pillar-tag">03 · Discreet Research &amp; Briefings</div>
               <div class="pillar-title">Private notes for serious capital</div>
               <p class="pillar-body">
                 Tailored, high-signal briefings that reduce complexity into a few clear, defensible decisions delivered quietly, with no marketing footprint.
@@ -991,8 +1250,8 @@
                 Please include only high-level context. Detailed materials, if appropriate, can follow under mutual NDA and preferred secure channels.
               </p>
               <div class="contact-tags">
-                <div class="contact-tag">BITCOIN & DIGITAL ASSETS</div>
-                <div class="contact-tag">MACRO & LIQUIDITY</div>
+                <div class="contact-tag">BITCOIN &amp; DIGITAL ASSETS</div>
+                <div class="contact-tag">MACRO &amp; LIQUIDITY</div>
                 <div class="contact-tag">RISK ARCHITECTURE</div>
                 <div class="contact-tag">FAMILY OFFICE / SOVEREIGN</div>
               </div>
@@ -1027,10 +1286,278 @@
     </footer>
   </div>
 
+  <!-- Floating Market Intelligence Dock -->
+  <div class="news-dock" id="newsDock">
+    <div class="news-dock-header">
+      <div class="news-dock-title">
+        <div class="news-dock-title-main">Market Intelligence</div>
+        <div class="news-dock-title-sub">CryptoPanic feed · Quantum Edge overlay</div>
+      </div>
+      <div class="news-dock-controls">
+        <button class="dock-collapse-btn" id="dockCollapseBtn">Minimise</button>
+      </div>
+    </div>
+
+    <div class="news-dock-header" style="border-top: none; border-bottom: 1px solid rgba(255,255,255,0.05); padding-top: 6px; padding-bottom: 6px;">
+      <div style="display:flex; flex-wrap:wrap; gap:6px;">
+        <button class="dock-pill active" data-asset="all">All</button>
+        <button class="dock-pill" data-asset="btc">BTC</button>
+        <button class="dock-pill" data-asset="eth">ETH</button>
+        <button class="dock-pill" data-asset="sol">SOL</button>
+        <button class="dock-pill" data-asset="xrp">XRP</button>
+        <button class="dock-pill" data-asset="bnb">BNB</button>
+        <button class="dock-pill" data-asset="macro">Macro</button>
+      </div>
+      <div class="dock-toggle" id="flowToggle">
+        <button data-flow="all" class="active">All</button>
+        <button data-flow="institutional">Inst</button>
+        <button data-flow="retail">Retail</button>
+      </div>
+    </div>
+
+    <div class="dock-body" id="newsBody">
+      <p style="font-size:11px; color:var(--text-soft); text-align:center; margin-top:10px;">
+        Loading curated flow-aligned news…
+      </p>
+    </div>
+
+    <div class="dock-footer">
+      <span id="lastUpdated">Last refresh: —</span>
+      <span>Auto-refresh: 60s · v1</span>
+    </div>
+  </div>
+
   <script>
-    // Set current year in footer
+    // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // CryptoPanic Integration
+    const CRYPTOPANIC_API_KEY = "584f9b893b65d0ae25334a36b59ecd6e202980ee"; // TODO: Replace with your actual CryptoPanic API key
+
+    let currentAssetFilter = "all";
+    let currentFlowFilter = "all";
+    let refreshIntervalMs = 60000;
+    let refreshTimer = null;
+
+    const newsBodyEl = document.getElementById("newsBody");
+    const lastUpdatedEl = document.getElementById("lastUpdated");
+
+    function buildCryptoPanicUrl() {
+      let base = `https://cryptopanic.com/api/v1/posts/?auth_token=${<script>
+  const CRYPTOPANIC_API_KEY = "584f9b893b65d0ae25334a36b59ecd6e2b43b8";  // ✔️ Correct place
+
+    async function loadCryptoNews() {
+    const url = 
+      `https://cryptopanic.com/api/v1/posts/?auth_token=${CRYPTOPANIC_API_KEY}&filter=hot`; 
+    ...
+  }
+
+  loadCryptoNews();
+  setInterval(loadCryptoNews, 60000);
+</script>}&kind=news&filter=important`;
+      if (currentAssetFilter !== "all" && currentAssetFilter !== "macro") {
+        base += `&currencies=${encodeURIComponent(currentAssetFilter)}`;
+      }
+      return base;
+    }
+
+    function classifySentiment(title) {
+      const t = title.toLowerCase();
+
+      const bullWords = ["surge", "rally", "reclaims", "breakout", "record", "accumulate", "buyback", "inflows", "approval", "expands", "launches etf", "etf inflows", "growth"];
+      const bearWords = ["crash", "plunge", "selloff", "collapse", "liquidation", "fraud", "hack", "ban", "probe", "lawsuit", "outflows", "downgrade"];
+
+      let bullScore = bullWords.reduce((s, w) => s + (t.includes(w) ? 1 : 0), 0);
+      let bearScore = bearWords.reduce((s, w) => s + (t.includes(w) ? 1 : 0), 0);
+
+      if (bullScore > bearScore && bullScore > 0) return "bullish";
+      if (bearScore > bullScore && bearScore > 0) return "bearish";
+      return "neutral";
+    }
+
+    function classifyFlow(item) {
+      const srcTitle = (item.source && item.source.title ? item.source.title : "").toLowerCase();
+      const srcDomain = (item.source && item.source.domain ? item.source.domain : "").toLowerCase();
+      const title = (item.title || "").toLowerCase();
+
+      const instKeywords = ["sec", "cftc", "regulator", "treasury", "blackrock", "fidelity", "vanguard", "jpmorgan", "goldman", "morgan stanley", "etf", "msci", "bloomberg", "s&p", "ratings", "imf", "bis", "central bank", "sovereign", "pension", "fund manager", "institutional"];
+      const retailKeywords = ["meme", "doge", "shiba", "airdrop", "giveaway", "community", "retail", "influencer", "tiktok", "reddit", "discord"];
+
+      let instScore = instKeywords.reduce((s, w) =>
+        s + (srcTitle.includes(w) || srcDomain.includes(w) || title.includes(w) ? 1 : 0), 0
+      );
+      let retailScore = retailKeywords.reduce((s, w) =>
+        s + (srcTitle.includes(w) || srcDomain.includes(w) || title.includes(w) ? 1 : 0), 0
+      );
+
+      if (instScore > retailScore && instScore > 0) return "institutional";
+      if (retailScore > instScore && retailScore > 0) return "retail";
+      return "all";
+    }
+
+    function heuristicSummary(item) {
+      const title = item.title || "";
+      const cleanTitle = title.replace(/\s*\|\s*.+$/,"").trim();
+
+      const lower = cleanTitle.toLowerCase();
+      let prefix = "";
+
+      if (lower.includes("etf") || lower.includes("sec") || lower.includes("blackrock") || lower.includes("fidelity")) {
+        prefix = "ETF & institutional flow: ";
+      } else if (lower.includes("regulation") || lower.includes("ban") || lower.includes("law") || lower.includes("probe") || lower.includes("fine")) {
+        prefix = "Regulatory signal: ";
+      } else if (lower.includes("liquidation") || lower.includes("crash") || lower.includes("selloff")) {
+        prefix = "Stress event: ";
+      } else if (lower.includes("rally") || lower.includes("breakout") || lower.includes("reclaims")) {
+        prefix = "Momentum shift: ";
+      } else {
+        prefix = "Structural note: ";
+      }
+
+      if (cleanTitle.length > 120) {
+        return prefix + cleanTitle.slice(0, 117) + "...";
+      }
+      return prefix + cleanTitle;
+    }
+
+    function assetTagText() {
+      if (currentAssetFilter === "all") return "Multi-asset · All";
+      if (currentAssetFilter === "macro") return "Macro / Policy signal";
+      return `Focused: ${currentAssetFilter.toUpperCase()}`;
+    }
+
+    async function loadCryptoNews() {
+      if (!CRYPTOPANIC_API_KEY || CRYPTOPANIC_API_KEY === "584f9b893b65d0ae25334a36b59ecd6e202980ee") {
+        newsBodyEl.innerHTML = `
+          <p style="font-size:11px; color:var(--danger); text-align:center; margin-top:10px;">
+            CryptoPanic API key not set. Please replace <code>584f9b893b65d0ae25334a36b59ecd6e202980ee</code> in the source.
+          </p>`;
+        return;
+      }
+
+      const url = buildCryptoPanicUrl();
+      newsBodyEl.innerHTML = `
+        <p style="font-size:11px; color:var(--text-soft); text-align:center; margin-top:10px;">
+          Refreshing high-signal feeds...
+        </p>`;
+
+      try {
+        const res = await fetch(url);
+        const data = await res.json();
+
+        if (!data.results || !Array.isArray(data.results) || data.results.length === 0) {
+          newsBodyEl.innerHTML = `
+            <p style="font-size:11px; color:var(--text-soft); text-align:center; margin-top:10px;">
+              No items available for the current filters.
+            </p>`;
+          return;
+        }
+
+        const items = data.results.slice(0, 25);
+        newsBodyEl.innerHTML = "";
+
+        items.forEach(item => {
+          const flowClass = classifyFlow(item);
+          if (currentFlowFilter !== "all" && flowClass !== currentFlowFilter) {
+            return;
+          }
+
+          const sentiment = classifySentiment(item.title || "");
+          const sentimentClass =
+            sentiment === "bullish" ? "sentiment-bull" :
+            sentiment === "bearish" ? "sentiment-bear" :
+            "sentiment-neutral";
+          const sentimentLabel =
+            sentiment === "bullish" ? "Bullish" :
+            sentiment === "bearish" ? "Bearish" :
+            "Neutral";
+
+          const summary = heuristicSummary(item);
+          const sourceTitle = item.source && item.source.title ? item.source.title : "Source";
+          const link = item.url || item.domain || "#";
+
+          const card = document.createElement("div");
+          card.className = "news-item";
+
+          card.innerHTML = `
+            <div class="news-item-header">
+              <div class="news-source">${sourceTitle}</div>
+              <div class="news-metadata">
+                <div class="sentiment-pill ${sentimentClass}">
+                  <div class="sentiment-dot"></div>
+                  <span>${sentimentLabel}</span>
+                </div>
+              </div>
+            </div>
+            <div class="news-title">${item.title || ""}</div>
+            <div class="news-summary">${summary}</div>
+            <a href="${link}" target="_blank" rel="noopener noreferrer" class="news-link">
+              VIEW SOURCE <span>↗</span>
+            </a>
+            <div class="news-tag-asset">${assetTagText()} · Flow: ${flowClass === "all" ? "Mixed" : flowClass.charAt(0).toUpperCase() + flowClass.slice(1)}</div>
+          `;
+
+          newsBodyEl.appendChild(card);
+        });
+
+        const now = new Date();
+        lastUpdatedEl.textContent = `Last refresh: ${now.toLocaleTimeString()}`;
+
+      } catch (e) {
+        console.error("CryptoPanic error:", e);
+        newsBodyEl.innerHTML = `
+          <p style="font-size:11px; color:var(--danger); text-align:center; margin-top:10px;">
+            Unable to load feed. Network or API issue.
+          </p>`;
+      }
+    }
+
+    function startAutoRefresh() {
+      if (refreshTimer) clearInterval(refreshTimer);
+      refreshTimer = setInterval(loadCryptoNews, refreshIntervalMs);
+    }
+
+    // Asset filter handling
+    const assetButtons = document.querySelectorAll(".dock-pill");
+    assetButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        assetButtons.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        currentAssetFilter = btn.getAttribute("data-asset");
+        loadCryptoNews();
+      });
+    });
+
+    // Flow toggle handling
+    const flowToggle = document.getElementById("flowToggle");
+    flowToggle.querySelectorAll("button").forEach(btn => {
+      btn.addEventListener("click", () => {
+        flowToggle.querySelectorAll("button").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        currentFlowFilter = btn.getAttribute("data-flow");
+        loadCryptoNews();
+      });
+    });
+
+    // Collapse / Minimise dock
+    const dock = document.getElementById("newsDock");
+    const dockCollapseBtn = document.getElementById("dockCollapseBtn");
+    let dockMinimized = false;
+
+    dockCollapseBtn.addEventListener("click", () => {
+      dockMinimized = !dockMinimized;
+      if (dockMinimized) {
+        dock.classList.add("news-dock-minimized");
+        dockCollapseBtn.textContent = "Expand";
+      } else {
+        dock.classList.remove("news-dock-minimized");
+        dockCollapseBtn.textContent = "Minimise";
+      }
+    });
+
+    // Initial load and auto-refresh
+    loadCryptoNews();
+    startAutoRefresh();
   </script>
 </body>
 </html>
-```0
