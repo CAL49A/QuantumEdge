@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -351,6 +352,8 @@
       color: rgba(211, 170, 92, 0.8);
       backdrop-filter: blur(10px);
       background: radial-gradient(circle at top, rgba(0,0,0,0.2), transparent 75%);
+      text-align: center;
+      line-height: 1.4;
     }
 
     .section-title {
@@ -513,7 +516,7 @@
     }
 
     .insight-quote::before {
-      content: "“";
+      content: "\201C";
       position: absolute;
       top: -34px;
       left: 16px;
@@ -670,6 +673,11 @@
       z-index: 60;
       overflow: hidden;
       font-size: 12px;
+      transition: max-height 0.3s ease;
+    }
+
+    .news-dock.news-dock-minimized {
+      max-height: 44px;
     }
 
     .news-dock-header {
@@ -679,6 +687,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 8px;
+      flex-shrink: 0;
     }
 
     .news-dock-title {
@@ -750,8 +759,25 @@
       color: var(--accent);
     }
 
+    .dock-filter-row {
+      padding: 6px 10px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      align-items: center;
+      justify-content: space-between;
+      flex-shrink: 0;
+    }
+
+    .dock-filter-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
     .dock-body {
-      padding: 10px 10px 10px;
+      padding: 10px;
       overflow-y: auto;
       flex: 1;
     }
@@ -764,6 +790,7 @@
       justify-content: space-between;
       font-size: 10px;
       color: var(--text-soft);
+      flex-shrink: 0;
     }
 
     .dock-footer span {
@@ -874,7 +901,7 @@
       letter-spacing: 0.16em;
       color: var(--text-soft);
       opacity: 0.8;
-      margin-top: 2px;
+      margin-top: 4px;
     }
 
     .dock-collapse-btn {
@@ -887,27 +914,6 @@
       letter-spacing: 0.14em;
       padding: 3px 7px;
       cursor: pointer;
-    }
-
-    .news-dock-minimized {
-      height: 32px;
-      max-height: 32px;
-      overflow: hidden;
-    }
-
-    .dock-minimized-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 6px 10px;
-      font-size: 10px;
-      gap: 8px;
-    }
-
-    .dock-minimized-bar span {
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--accent);
     }
 
     @media (max-width: 900px) {
@@ -996,7 +1002,7 @@
           </div>
           <a href="#contact" class="nav-cta">
             PRIVATE ACCESS
-            <span>↗</span>
+            <span>&#8599;</span>
           </a>
         </nav>
       </div>
@@ -1009,7 +1015,7 @@
           <div class="hero-grid">
             <div>
               <div class="eyebrow">Discreet Macro &amp; Digital-Asset Intelligence</div>
-              <div class="eyebrow">Mr. Paul Singh, Founder - Director · Chief Asymmetric Strategy Architect (CASA)</div>
+              <div class="eyebrow">Mr. Paul Singh, Founder &ndash; Director &middot; Chief Asymmetric Strategy Architect (CASA)</div>
               <h1 class="hero-title">
                 Sovereign-grade insight<br />
                 for <span>asymmetric capital</span>
@@ -1070,11 +1076,7 @@
                     Focuses on second-order effects where consensus arrives last and returns are made.
                   </div>
                 </div>
-                <div class="hc-seal">
-                  QUIET
-                  <br />
-                  ADVANTAGE
-                </div>
+                <div class="hc-seal">QUIET<br />ADVANTAGE</div>
               </div>
             </aside>
           </div>
@@ -1092,7 +1094,7 @@
           <div class="pillars-grid">
             <article class="pillar-card">
               <div class="pillar-halo"></div>
-              <div class="pillar-tag">01 · Strategic Asymmetry</div>
+              <div class="pillar-tag">01 &middot; Strategic Asymmetry</div>
               <div class="pillar-title">Edges where others see failure</div>
               <p class="pillar-body">
                 We treat slow Bitcoin, high ETH gas, congested Solana and fragile stablecoins not as flaws, but as signal-rich stress points. Asymmetry appears where infrastructure strain meets structural adoption.
@@ -1100,18 +1102,18 @@
             </article>
 
             <article class="pillar-card">
-              <div class="pillar-tag">02 · Timing &amp; Second-Order Effects</div>
+              <div class="pillar-tag">02 &middot; Timing &amp; Second-Order Effects</div>
               <div class="pillar-title">Positioning before the narrative</div>
               <p class="pillar-body">
-                We don’t chase “what just happened.” We map how liquidity, regulation, and institutional flows will react next and how those reactions will be mispriced by conventional models.
+                We don&rsquo;t chase &ldquo;what just happened.&rdquo; We map how liquidity, regulation, and institutional flows will react next and how those reactions will be mispriced by conventional models.
               </p>
             </article>
 
             <article class="pillar-card">
-              <div class="pillar-tag">03 · Psychology of Capital</div>
+              <div class="pillar-tag">03 &middot; Psychology of Capital</div>
               <div class="pillar-title">Understanding how money feels</div>
               <p class="pillar-body">
-                HNWI, Family Offices, and Institutions don’t move on spreadsheets alone. They move on fear, pride, reputational risk and opportunity cost. We translate this psychology into positioning decisions.
+                HNWI, Family Offices, and Institutions don&rsquo;t move on spreadsheets alone. They move on fear, pride, reputational risk and opportunity cost. We translate this psychology into positioning decisions.
               </p>
             </article>
           </div>
@@ -1155,7 +1157,7 @@
                 <div class="service-item">
                   <strong>Sentiment &amp; Narrative Diagnostics</strong>
                   <p>
-                    Identifies when headlines, social narratives, and analyst commentary diverge from structural flows—a fertile zone for asymmetric entries and exits.
+                    Identifies when headlines, social narratives, and analyst commentary diverge from structural flows&mdash;a fertile zone for asymmetric entries and exits.
                   </p>
                   <div class="badge-row">
                     <span class="badge">PERCEPTION vs REALITY</span>
@@ -1186,9 +1188,9 @@
 
           <div class="insight-quote">
             <p class="iq-body">
-              In a world where Bitcoin can crash on leverage, Ethereum can price out small users, Solana can congest, and stablecoins can wobble under reserve risk, <span>the edge is not choosing a winner</span>—it is engineering a sovereign routing strategy across all of them.
+              In a world where Bitcoin can crash on leverage, Ethereum can price out small users, Solana can congest, and stablecoins can wobble under reserve risk, <span>the edge is not choosing a winner</span>&mdash;it is engineering a sovereign routing strategy across all of them.
             </p>
-            <div class="iq-meta">Quantum Edge · Macro &amp; Digital Asset View</div>
+            <div class="iq-meta">Quantum Edge &middot; Macro &amp; Digital Asset View</div>
           </div>
         </div>
       </section>
@@ -1198,29 +1200,29 @@
         <div class="shell">
           <h2 class="section-title">Advisory Mandates</h2>
           <p class="section-subtitle">
-            Engagements are selective, bespoke, and designed to complement existing CIO, investment committee, and risk teams not to replace them.
+            Engagements are selective, bespoke, and designed to complement existing CIO, investment committee, and risk teams&mdash;not to replace them.
           </p>
 
           <div class="pillars-grid">
             <article class="pillar-card">
-              <div class="pillar-tag">01 · Strategic Counsel</div>
+              <div class="pillar-tag">01 &middot; Strategic Counsel</div>
               <div class="pillar-title">Boardroom-level macro &amp; crypto guidance</div>
               <p class="pillar-body">
                 Discreet sounding board for sovereign funds, family offices, and institutional allocators considering or expanding digital asset and Bitcoin exposure.
               </p>
             </article>
             <article class="pillar-card">
-              <div class="pillar-tag">02 · Regime &amp; Risk Mapping</div>
+              <div class="pillar-tag">02 &middot; Regime &amp; Risk Mapping</div>
               <div class="pillar-title">From event risk to structural understanding</div>
               <p class="pillar-body">
                 Translating regulatory shocks, ETF flows, stablecoin stress, and cross-asset volatility into a coherent, cycle-aware capital allocation framework.
               </p>
             </article>
             <article class="pillar-card">
-              <div class="pillar-tag">03 · Discreet Research &amp; Briefings</div>
+              <div class="pillar-tag">03 &middot; Discreet Research &amp; Briefings</div>
               <div class="pillar-title">Private notes for serious capital</div>
               <p class="pillar-body">
-                Tailored, high-signal briefings that reduce complexity into a few clear, defensible decisions delivered quietly, with no marketing footprint.
+                Tailored, high-signal briefings that reduce complexity into a few clear, defensible decisions&mdash;delivered quietly, with no marketing footprint.
               </p>
             </article>
           </div>
@@ -1242,9 +1244,9 @@
                 For HNWIs, Family Offices, institutional desks, and sovereign-linked entities exploring strategic advisory or bespoke intelligence, initial contact can be made via encrypted email.
               </p>
               <div class="contact-meta">Primary channel</div>
-              <a href="mailto:cal49a@protonmail.com" class="contact-link">
-                Contact: Cal49a@pm.me
-                <span>↗</span>
+              <a href="/cdn-cgi/l/email-protection#5b383a376f623a1b2b29342f3435363a323775383436" class="contact-link">
+                Contact: <span class="__cf_email__" data-cfemail="b4f7d5d8808dd5f4c4d99ad9d1">[email&#160;protected]</span>
+                <span>&#8599;</span>
               </a>
               <p class="contact-note">
                 Please include only high-level context. Detailed materials, if appropriate, can follow under mutual NDA and preferred secure channels.
@@ -1263,7 +1265,7 @@
                 Fewer relationships, deeper context, higher trust. The objective is not to predict every move, but to prevent unforced errors and position into structural opportunity before it becomes consensus.
               </p>
               <p style="font-size:12px; color:var(--text-soft);">
-                Capital that survives the next regime will be that which understands how Bitcoin, stablecoins, AI, regulation, and human behavior intersect. Quantum Edge exists to read that intersection early—and quietly.
+                Capital that survives the next regime will be that which understands how Bitcoin, stablecoins, AI, regulation, and human behavior intersect. Quantum Edge exists to read that intersection early&mdash;and quietly.
               </p>
             </div>
           </div>
@@ -1275,7 +1277,7 @@
     <footer>
       <div class="shell">
         <div class="footer-inner">
-          <span>© <span id="year"></span> Quantum Edge · All Rights Reserved</span>
+          <span>&copy; <span id="year"></span> Quantum Edge &middot; All Rights Reserved</span>
           <div class="footer-links">
             <a href="#top">Back to top</a>
             <a href="#model">Framework</a>
@@ -1291,15 +1293,15 @@
     <div class="news-dock-header">
       <div class="news-dock-title">
         <div class="news-dock-title-main">Market Intelligence</div>
-        <div class="news-dock-title-sub">CryptoPanic feed · Quantum Edge overlay</div>
+        <div class="news-dock-title-sub">cryptocurrency.cv feed &middot; Quantum Edge overlay</div>
       </div>
       <div class="news-dock-controls">
         <button class="dock-collapse-btn" id="dockCollapseBtn">Minimise</button>
       </div>
     </div>
 
-    <div class="news-dock-header" style="border-top: none; border-bottom: 1px solid rgba(255,255,255,0.05); padding-top: 6px; padding-bottom: 6px;">
-      <div style="display:flex; flex-wrap:wrap; gap:6px;">
+    <div class="dock-filter-row">
+      <div class="dock-filter-pills">
         <button class="dock-pill active" data-asset="all">All</button>
         <button class="dock-pill" data-asset="btc">BTC</button>
         <button class="dock-pill" data-asset="eth">ETH</button>
@@ -1317,198 +1319,175 @@
 
     <div class="dock-body" id="newsBody">
       <p style="font-size:11px; color:var(--text-soft); text-align:center; margin-top:10px;">
-        Loading curated flow-aligned news…
+        Loading curated flow-aligned news&hellip;
       </p>
     </div>
 
     <div class="dock-footer">
-      <span id="lastUpdated">Last refresh: —</span>
-      <span>Auto-refresh: 60s · v1</span>
+      <span id="lastUpdated">Last refresh: &mdash;</span>
+      <span>Auto-refresh: 60s &middot; v1</span>
     </div>
   </div>
 
-  <script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // CryptoPanic Integration
-    const CRYPTOPANIC_API_KEY = "584f9b893b65d0ae25334a36b59ecd6e202980ee"; // TODO: Replace with your actual CryptoPanic API key
+    // Free Crypto News API (cryptocurrency.cv) — no API key required
+    // Source: https://github.com/nirholas/free-crypto-news
 
     let currentAssetFilter = "all";
     let currentFlowFilter = "all";
-    let refreshIntervalMs = 60000;
+    const refreshIntervalMs = 60000;
     let refreshTimer = null;
 
     const newsBodyEl = document.getElementById("newsBody");
     const lastUpdatedEl = document.getElementById("lastUpdated");
 
-    function buildCryptoPanicUrl() {
-      let base = `https://cryptopanic.com/api/v1/posts/?auth_token=${<script>
-  const CRYPTOPANIC_API_KEY = "584f9b893b65d0ae25334a36b59ecd6e2b43b8";  // ✔️ Correct place
-
-    async function loadCryptoNews() {
-    const url = 
-      `https://cryptopanic.com/api/v1/posts/?auth_token=${CRYPTOPANIC_API_KEY}&filter=hot`; 
-    ...
-  }
-
-  loadCryptoNews();
-  setInterval(loadCryptoNews, 60000);
-</script>}&kind=news&filter=important`;
+    function buildApiUrl() {
+      // Base endpoint: returns latest 25 enriched articles with sentiment metadata
+      let url = "https://cryptocurrency.cv/api/archive?limit=25";
       if (currentAssetFilter !== "all" && currentAssetFilter !== "macro") {
-        base += `&currencies=${encodeURIComponent(currentAssetFilter)}`;
+        url += "&ticker=" + encodeURIComponent(currentAssetFilter.toUpperCase());
       }
-      return base;
+      // Map Quantum Edge sentiment filter to API sentiment param
+      // API supports: positive, negative, neutral
+      return url;
     }
 
-    function classifySentiment(title) {
-      const t = title.toLowerCase();
-
-      const bullWords = ["surge", "rally", "reclaims", "breakout", "record", "accumulate", "buyback", "inflows", "approval", "expands", "launches etf", "etf inflows", "growth"];
-      const bearWords = ["crash", "plunge", "selloff", "collapse", "liquidation", "fraud", "hack", "ban", "probe", "lawsuit", "outflows", "downgrade"];
-
-      let bullScore = bullWords.reduce((s, w) => s + (t.includes(w) ? 1 : 0), 0);
-      let bearScore = bearWords.reduce((s, w) => s + (t.includes(w) ? 1 : 0), 0);
-
+    function resolveSentiment(item) {
+      // Prefer the API's own sentiment field if present
+      if (item.sentiment) {
+        const s = item.sentiment.toLowerCase();
+        if (s === "positive" || s === "bullish") return "bullish";
+        if (s === "negative" || s === "bearish") return "bearish";
+        return "neutral";
+      }
+      // Fallback: heuristic keyword scan on title
+      const t = (item.title || "").toLowerCase();
+      const bullWords = ["surge", "rally", "reclaims", "breakout", "record", "accumulate", "buyback", "inflows", "approval", "expands", "etf inflows", "growth", "soars", "jumps", "climbs", "gains"];
+      const bearWords = ["crash", "plunge", "selloff", "collapse", "liquidation", "fraud", "hack", "ban", "probe", "lawsuit", "outflows", "downgrade", "drops", "falls", "tumbles", "slumps"];
+      const bullScore = bullWords.reduce(function(s, w) { return s + (t.includes(w) ? 1 : 0); }, 0);
+      const bearScore = bearWords.reduce(function(s, w) { return s + (t.includes(w) ? 1 : 0); }, 0);
       if (bullScore > bearScore && bullScore > 0) return "bullish";
       if (bearScore > bullScore && bearScore > 0) return "bearish";
       return "neutral";
     }
 
     function classifyFlow(item) {
-      const srcTitle = (item.source && item.source.title ? item.source.title : "").toLowerCase();
-      const srcDomain = (item.source && item.source.domain ? item.source.domain : "").toLowerCase();
+      const src = (item.source || "").toLowerCase();
       const title = (item.title || "").toLowerCase();
-
-      const instKeywords = ["sec", "cftc", "regulator", "treasury", "blackrock", "fidelity", "vanguard", "jpmorgan", "goldman", "morgan stanley", "etf", "msci", "bloomberg", "s&p", "ratings", "imf", "bis", "central bank", "sovereign", "pension", "fund manager", "institutional"];
+      const instKeywords = ["sec", "cftc", "regulator", "treasury", "blackrock", "fidelity", "vanguard", "jpmorgan", "goldman", "morgan stanley", "etf", "bloomberg", "imf", "bis", "central bank", "sovereign", "pension", "institutional"];
       const retailKeywords = ["meme", "doge", "shiba", "airdrop", "giveaway", "community", "retail", "influencer", "tiktok", "reddit", "discord"];
-
-      let instScore = instKeywords.reduce((s, w) =>
-        s + (srcTitle.includes(w) || srcDomain.includes(w) || title.includes(w) ? 1 : 0), 0
-      );
-      let retailScore = retailKeywords.reduce((s, w) =>
-        s + (srcTitle.includes(w) || srcDomain.includes(w) || title.includes(w) ? 1 : 0), 0
-      );
-
+      const instScore  = instKeywords.reduce(function(s, w)  { return s + (src.includes(w) || title.includes(w) ? 1 : 0); }, 0);
+      const retailScore = retailKeywords.reduce(function(s, w) { return s + (src.includes(w) || title.includes(w) ? 1 : 0); }, 0);
       if (instScore > retailScore && instScore > 0) return "institutional";
       if (retailScore > instScore && retailScore > 0) return "retail";
-      return "all";
+      return "mixed";
     }
 
     function heuristicSummary(item) {
-      const title = item.title || "";
-      const cleanTitle = title.replace(/\s*\|\s*.+$/,"").trim();
-
+      // Use description if provided by API, otherwise annotate title
+      if (item.description && item.description.length > 20) {
+        return item.description.length > 140 ? item.description.slice(0, 137) + "..." : item.description;
+      }
+      const title = (item.title || "");
+      const cleanTitle = title.replace(/\s*\|\s*.+$/, "").trim();
       const lower = cleanTitle.toLowerCase();
       let prefix = "";
-
       if (lower.includes("etf") || lower.includes("sec") || lower.includes("blackrock") || lower.includes("fidelity")) {
         prefix = "ETF & institutional flow: ";
       } else if (lower.includes("regulation") || lower.includes("ban") || lower.includes("law") || lower.includes("probe") || lower.includes("fine")) {
         prefix = "Regulatory signal: ";
       } else if (lower.includes("liquidation") || lower.includes("crash") || lower.includes("selloff")) {
         prefix = "Stress event: ";
-      } else if (lower.includes("rally") || lower.includes("breakout") || lower.includes("reclaims")) {
+      } else if (lower.includes("rally") || lower.includes("breakout") || lower.includes("reclaims") || lower.includes("soars")) {
         prefix = "Momentum shift: ";
       } else {
         prefix = "Structural note: ";
       }
-
-      if (cleanTitle.length > 120) {
-        return prefix + cleanTitle.slice(0, 117) + "...";
-      }
-      return prefix + cleanTitle;
+      return prefix + (cleanTitle.length > 110 ? cleanTitle.slice(0, 107) + "..." : cleanTitle);
     }
 
     function assetTagText() {
-      if (currentAssetFilter === "all") return "Multi-asset · All";
+      if (currentAssetFilter === "all") return "Multi-asset \u00B7 All";
       if (currentAssetFilter === "macro") return "Macro / Policy signal";
-      return `Focused: ${currentAssetFilter.toUpperCase()}`;
+      return "Focused: " + currentAssetFilter.toUpperCase();
+    }
+
+    // Sanitise text before injecting into innerHTML
+    function esc(str) {
+      return (str || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
     }
 
     async function loadCryptoNews() {
-      if (!CRYPTOPANIC_API_KEY || CRYPTOPANIC_API_KEY === "584f9b893b65d0ae25334a36b59ecd6e202980ee") {
-        newsBodyEl.innerHTML = `
-          <p style="font-size:11px; color:var(--danger); text-align:center; margin-top:10px;">
-            CryptoPanic API key not set. Please replace <code>584f9b893b65d0ae25334a36b59ecd6e202980ee</code> in the source.
-          </p>`;
-        return;
-      }
-
-      const url = buildCryptoPanicUrl();
-      newsBodyEl.innerHTML = `
-        <p style="font-size:11px; color:var(--text-soft); text-align:center; margin-top:10px;">
-          Refreshing high-signal feeds...
-        </p>`;
+      newsBodyEl.innerHTML = '<p style="font-size:11px; color:var(--text-soft); text-align:center; margin-top:10px;">Refreshing high-signal feeds\u2026</p>';
 
       try {
-        const res = await fetch(url);
+        const res = await fetch(buildApiUrl());
+        if (!res.ok) throw new Error("HTTP " + res.status);
         const data = await res.json();
 
-        if (!data.results || !Array.isArray(data.results) || data.results.length === 0) {
-          newsBodyEl.innerHTML = `
-            <p style="font-size:11px; color:var(--text-soft); text-align:center; margin-top:10px;">
-              No items available for the current filters.
-            </p>`;
+        // API returns { articles: [...] } or an array directly
+        const raw = Array.isArray(data) ? data : (data.articles || data.results || []);
+
+        if (!raw.length) {
+          newsBodyEl.innerHTML = '<p style="font-size:11px; color:var(--text-soft); text-align:center; margin-top:10px;">No items available for the current filters.</p>';
           return;
         }
 
-        const items = data.results.slice(0, 25);
         newsBodyEl.innerHTML = "";
+        let rendered = 0;
 
-        items.forEach(item => {
+        raw.slice(0, 30).forEach(function(item) {
           const flowClass = classifyFlow(item);
-          if (currentFlowFilter !== "all" && flowClass !== currentFlowFilter) {
-            return;
+          if (currentFlowFilter !== "all" && flowClass !== currentFlowFilter) return;
+
+          // Filter by macro keywords if macro tab selected
+          if (currentAssetFilter === "macro") {
+            const t = (item.title || "").toLowerCase();
+            const macroHit = ["fed", "rate", "inflation", "cpi", "gdp", "treasury", "fomc", "monetary", "fiscal", "regulation", "policy", "sec", "imf", "bis"].some(function(w) { return t.includes(w); });
+            if (!macroHit) return;
           }
 
-          const sentiment = classifySentiment(item.title || "");
-          const sentimentClass =
-            sentiment === "bullish" ? "sentiment-bull" :
-            sentiment === "bearish" ? "sentiment-bear" :
-            "sentiment-neutral";
-          const sentimentLabel =
-            sentiment === "bullish" ? "Bullish" :
-            sentiment === "bearish" ? "Bearish" :
-            "Neutral";
-
+          const sentiment = resolveSentiment(item);
+          const sentimentClass = sentiment === "bullish" ? "sentiment-bull" : sentiment === "bearish" ? "sentiment-bear" : "sentiment-neutral";
+          const sentimentLabel = sentiment === "bullish" ? "Bullish" : sentiment === "bearish" ? "Bearish" : "Neutral";
           const summary = heuristicSummary(item);
-          const sourceTitle = item.source && item.source.title ? item.source.title : "Source";
-          const link = item.url || item.domain || "#";
+          const sourceTitle = item.source || item.source_key || "Source";
+          const link = item.link || item.url || "#";
+          const flowLabel = flowClass === "mixed" ? "Mixed" : flowClass.charAt(0).toUpperCase() + flowClass.slice(1);
 
           const card = document.createElement("div");
           card.className = "news-item";
-
-          card.innerHTML = `
-            <div class="news-item-header">
-              <div class="news-source">${sourceTitle}</div>
-              <div class="news-metadata">
-                <div class="sentiment-pill ${sentimentClass}">
-                  <div class="sentiment-dot"></div>
-                  <span>${sentimentLabel}</span>
-                </div>
-              </div>
-            </div>
-            <div class="news-title">${item.title || ""}</div>
-            <div class="news-summary">${summary}</div>
-            <a href="${link}" target="_blank" rel="noopener noreferrer" class="news-link">
-              VIEW SOURCE <span>↗</span>
-            </a>
-            <div class="news-tag-asset">${assetTagText()} · Flow: ${flowClass === "all" ? "Mixed" : flowClass.charAt(0).toUpperCase() + flowClass.slice(1)}</div>
-          `;
+          card.innerHTML =
+            '<div class="news-item-header">' +
+              '<div class="news-source">' + esc(sourceTitle) + '</div>' +
+              '<div class="news-metadata">' +
+                '<div class="sentiment-pill ' + sentimentClass + '">' +
+                  '<div class="sentiment-dot"></div>' +
+                  '<span>' + sentimentLabel + '</span>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+            '<div class="news-title">' + esc(item.title || "") + '</div>' +
+            '<div class="news-summary">' + esc(summary) + '</div>' +
+            '<a href="' + esc(link) + '" target="_blank" rel="noopener noreferrer" class="news-link">VIEW SOURCE &#8599;</a>' +
+            '<div class="news-tag-asset">' + assetTagText() + ' \u00B7 Flow: ' + flowLabel + '</div>';
 
           newsBodyEl.appendChild(card);
+          rendered++;
         });
 
-        const now = new Date();
-        lastUpdatedEl.textContent = `Last refresh: ${now.toLocaleTimeString()}`;
+        if (rendered === 0) {
+          newsBodyEl.innerHTML = '<p style="font-size:11px; color:var(--text-soft); text-align:center; margin-top:10px;">No items match the current filters.</p>';
+        }
+
+        lastUpdatedEl.textContent = "Last refresh: " + new Date().toLocaleTimeString();
 
       } catch (e) {
-        console.error("CryptoPanic error:", e);
-        newsBodyEl.innerHTML = `
-          <p style="font-size:11px; color:var(--danger); text-align:center; margin-top:10px;">
-            Unable to load feed. Network or API issue.
-          </p>`;
+        console.error("News feed error:", e);
+        newsBodyEl.innerHTML = '<p style="font-size:11px; color:var(--danger); text-align:center; margin-top:10px;">Unable to load feed. Network or API issue.</p>';
       }
     }
 
@@ -1518,10 +1497,9 @@
     }
 
     // Asset filter handling
-    const assetButtons = document.querySelectorAll(".dock-pill");
-    assetButtons.forEach(btn => {
-      btn.addEventListener("click", () => {
-        assetButtons.forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".dock-pill").forEach(function(btn) {
+      btn.addEventListener("click", function() {
+        document.querySelectorAll(".dock-pill").forEach(function(b) { b.classList.remove("active"); });
         btn.classList.add("active");
         currentAssetFilter = btn.getAttribute("data-asset");
         loadCryptoNews();
@@ -1529,10 +1507,9 @@
     });
 
     // Flow toggle handling
-    const flowToggle = document.getElementById("flowToggle");
-    flowToggle.querySelectorAll("button").forEach(btn => {
-      btn.addEventListener("click", () => {
-        flowToggle.querySelectorAll("button").forEach(b => b.classList.remove("active"));
+    document.getElementById("flowToggle").querySelectorAll("button").forEach(function(btn) {
+      btn.addEventListener("click", function() {
+        document.getElementById("flowToggle").querySelectorAll("button").forEach(function(b) { b.classList.remove("active"); });
         btn.classList.add("active");
         currentFlowFilter = btn.getAttribute("data-flow");
         loadCryptoNews();
@@ -1540,24 +1517,13 @@
     });
 
     // Collapse / Minimise dock
-    const dock = document.getElementById("newsDock");
-    const dockCollapseBtn = document.getElementById("dockCollapseBtn");
-    let dockMinimized = false;
+    var dock = document.getElementById("newsDock");
+    var dockCollapseBtn = document.getElementById("dockCollapseBtn");
+    var dockMinimized = false;
 
-    dockCollapseBtn.addEventListener("click", () => {
+    dockCollapseBtn.addEventListener("click", function() {
       dockMinimized = !dockMinimized;
       if (dockMinimized) {
         dock.classList.add("news-dock-minimized");
         dockCollapseBtn.textContent = "Expand";
-      } else {
-        dock.classList.remove("news-dock-minimized");
-        dockCollapseBtn.textContent = "Minimise";
-      }
-    });
-
-    // Initial load and auto-refresh
-    loadCryptoNews();
-    startAutoRefresh();
-  </script>
-</body>
-</html>
+      } e
