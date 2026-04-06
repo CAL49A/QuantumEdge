@@ -1015,9 +1015,7 @@
           <div class="hero-grid">
             <div>
               <div class="eyebrow">Discreet Macro &amp; Digital-Asset Intelligence</div>
-              <div class="eyebrow">Mr. Paul Singh, Founder </div>
-              <div class="eyebrow">Chief Asymmetric Strategy Architect (CASA)</div>
-              <div class="eyebrow">DIFC, Dubai. UAE </div>
+              <div class="eyebrow">Mr. Paul Singh, Founder &ndash; Director &middot; Chief Asymmetric Strategy Architect (CASA)</div>
               <h1 class="hero-title">
                 Sovereign-grade insight<br />
                 for <span>asymmetric capital</span>
@@ -1294,40 +1292,31 @@
   <div class="news-dock" id="newsDock">
     <div class="news-dock-header">
       <div class="news-dock-title">
-        <div class="news-dock-title-main">Market Intelligence</div>
-        <div class="news-dock-title-sub">AI Intelligence &middot; Quantum Edge overlay</div>
+        <div class="news-dock-title-main">Live Intelligence Feed</div>
+        <div class="news-dock-title-sub" id="lastUpdated">Initialising&hellip;</div>
       </div>
       <div class="news-dock-controls">
-        <button class="dock-collapse-btn" id="dockCollapseBtn">Minimise</button>
+        <button class="dock-collapse-btn" id="dockCollapseBtn" onclick="toggleDock()">Minimise</button>
       </div>
     </div>
 
     <div class="dock-filter-row">
       <div class="dock-filter-pills">
-        <button class="dock-pill active" data-asset="all">All</button>
-        <button class="dock-pill" data-asset="btc">BTC</button>
-        <button class="dock-pill" data-asset="eth">ETH</button>
-        <button class="dock-pill" data-asset="sol">SOL</button>
-        <button class="dock-pill" data-asset="xrp">XRP</button>
-        <button class="dock-pill" data-asset="bnb">BNB</button>
-        <button class="dock-pill" data-asset="macro">Macro</button>
-      </div>
-      <div class="dock-toggle" id="flowToggle">
-        <button data-flow="all" class="active">All</button>
-        <button data-flow="institutional">Inst</button>
-        <button data-flow="retail">Retail</button>
+        <div class="pill" style="margin-bottom:0; border-color:var(--accent-soft)">
+          <div class="pill-dot"></div> Live Flows
+        </div>
       </div>
     </div>
 
-    <div class="dock-body" id="newsBody">
-      <p style="font-size:11px; color:var(--text-soft); text-align:center; margin-top:10px;">
-        Loading curated flow-aligned news&hellip;
-      </p>
+    <div class="dock-body" id="priceFeed">
+      <div class="news-item">
+        <div class="news-title">Loading Sovereign Flows&hellip;</div>
+      </div>
     </div>
 
     <div class="dock-footer">
-      <span id="lastUpdated">Last refresh: &mdash;</span>
-      <span>Auto-refresh: 60s &middot; v1</span>
+      <span>Source: Binance Live API</span>
+      <span id="refreshTimer">Next sync: 30s</span>
     </div>
   </div>
 
@@ -1335,160 +1324,90 @@
     // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // ── Market Intelligence Feed ─────────────────────────────────────────────
-    // Powered by Claude AI (Anthropic) — fetches, summarises and classifies
-    // live crypto news on demand. No CORS proxy needed.
+    // ── Binance REST price feed ───────────────────────────────────────────────
+    const symbols = ['BTCUSDT', 'ETHUSDT', 'SOLUSDT', 'BNBUSDT', 'XRPUSDT'];
+    let prevPrices = {};
+    let timeLeft = 30;
 
-    let currentAssetFilter = "all";
-    let currentFlowFilter  = "all";
-    const refreshIntervalMs = 60000;
-    let refreshTimer = null;
-
-    const newsBodyEl    = document.getElementById("newsBody");
-    const lastUpdatedEl = document.getElementById("lastUpdated");
-
-    function assetTagText() {
-      if (currentAssetFilter === "all")   return "Multi-asset \u00B7 All";
-      if (currentAssetFilter === "macro") return "Macro / Policy";
-      return "Focused: " + currentAssetFilter.toUpperCase();
-    }
-
-    function esc(str) {
-      return (str || "")
-        .replace(/&/g,"&amp;").replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;").replace(/"/g,"&quot;");
-    }
-
-    // ── Build prompt for Claude ───────────────────────────────────────────────
-    function buildPrompt() {
-      var asset = currentAssetFilter === "all" ? "crypto (BTC, ETH, SOL, XRP, BNB)"
-                : currentAssetFilter === "macro" ? "macro finance and crypto regulation"
-                : currentAssetFilter.toUpperCase();
-
-      return "You are a crypto market intelligence analyst. Generate exactly 8 realistic, " +
-        "plausible crypto news headlines for " + asset + " as of today. " +
-        "These should reflect typical market conditions, institutional flows, regulatory updates, " +
-        "and price action. Respond ONLY with a valid JSON array, no markdown, no explanation. " +
-        "Each object must have exactly these fields: " +
-        "title (string, max 120 chars), " +
-        "source (one of: CoinDesk, Reuters, Bloomberg Crypto, CoinTelegraph, FT, WSJ, Decrypt), " +
-        "sentiment (exactly one of: bullish, bearish, neutral), " +
-        "flow (exactly one of: institutional, retail, mixed), " +
-        "category (one of: ETF & institutional flow, Regulatory signal, Stress event, Momentum shift, Macro signal, Structural note), " +
-        "url (use https://coindesk.com or https://cointelegraph.com). " +
-        "Example: [{\"title\":\"BlackRock BTC ETF sees record $500M inflows\",\"source\":\"Bloomberg Crypto\",\"sentiment\":\"bullish\",\"flow\":\"institutional\",\"category\":\"ETF & institutional flow\",\"url\":\"https://coindesk.com\"}]. " +
-        "Return ONLY the JSON array.";
-    }
-
-    // ── Fetch from Anthropic API ──────────────────────────────────────────────
-    async function fetchFromClaude() {
-      var response = await fetch("https://api.anthropic.com/v1/messages", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          model: "claude-haiku-4-5-20251001",
-          max_tokens: 1000,
-          messages: [{ role: "user", content: buildPrompt() }]
-        })
-      });
-
-      if (!response.ok) throw new Error("API HTTP " + response.status);
-      var data = await response.json();
-      var text = data.content && data.content[0] ? data.content[0].text : "";
-
-      // Strip any markdown fences if present
-      text = text.replace(/```json|```/g, "").trim();
-
-      var items = JSON.parse(text);
-      if (!Array.isArray(items)) throw new Error("Not an array");
-      return items;
-    }
-
-    // ── Render cards ──────────────────────────────────────────────────────────
-    function renderItems(items) {
-      newsBodyEl.innerHTML = "";
-      var rendered = 0;
-
-      items.forEach(function(item) {
-        // Apply flow filter
-        if (currentFlowFilter !== "all" && item.flow !== currentFlowFilter) return;
-
-        var sentimentClass = item.sentiment === "bullish" ? "sentiment-bull"
-                           : item.sentiment === "bearish" ? "sentiment-bear"
-                           : "sentiment-neutral";
-        var sentimentLabel = item.sentiment
-          ? item.sentiment.charAt(0).toUpperCase() + item.sentiment.slice(1)
-          : "Neutral";
-        var flowLabel = item.flow
-          ? item.flow.charAt(0).toUpperCase() + item.flow.slice(1)
-          : "Mixed";
-
-        var card = document.createElement("div");
-        card.className = "news-item";
-        card.innerHTML =
-          '<div class="news-item-header">' +
-            '<div class="news-source">' + esc(item.source) + '</div>' +
-            '<div class="news-metadata">' +
-              '<div class="sentiment-pill ' + sentimentClass + '">' +
-                '<div class="sentiment-dot"></div>' +
-                '<span>' + sentimentLabel + '</span>' +
-              '</div>' +
-            '</div>' +
-          '</div>' +
-          '<div class="news-title">' + esc(item.title) + '</div>' +
-          '<div class="news-summary">' + esc(item.category) + ': ' + esc(item.title) + '</div>' +
-          '<a href="' + esc(item.url) + '" target="_blank" rel="noopener noreferrer" class="news-link">VIEW SOURCE &#8599;</a>' +
-          '<div class="news-tag-asset">' + assetTagText() + ' \u00B7 Flow: ' + flowLabel + '</div>';
-
-        newsBodyEl.appendChild(card);
-        rendered++;
-      });
-
-      if (rendered === 0) {
-        newsBodyEl.innerHTML = '<p style="font-size:11px; color:var(--text-soft); text-align:center; margin-top:14px;">No items match the current filters.</p>';
-      }
-      lastUpdatedEl.textContent = "Last refresh: " + new Date().toLocaleTimeString();
-    }
-
-    // ── Main loader ───────────────────────────────────────────────────────────
-    async function loadCryptoNews() {
-      newsBodyEl.innerHTML = '<p style="font-size:11px; color:var(--text-soft); text-align:center; margin-top:14px;">Refreshing high-signal feeds\u2026</p>';
+    async function fetchPrices() {
       try {
-        var items = await fetchFromClaude();
-        renderItems(items);
-      } catch (err) {
-        console.error("Feed error:", err.message);
-        newsBodyEl.innerHTML =
-          '<p style="font-size:11px; color:var(--danger); text-align:center; margin-top:14px;">' +
-          'Feed unavailable \u2014 retrying in 60s.</p>';
+        const url = 'https://api.binance.com/api/v3/ticker/24hr?symbols=' + JSON.stringify(symbols);
+        const response = await fetch(url);
+        const data = await response.json();
+        renderPrices(data);
+        updateTimestamp();
+        timeLeft = 30;
+      } catch (error) {
+        console.error('Flow disruption:', error);
+        document.getElementById('priceFeed').innerHTML =
+          '<div class="news-item"><div class="news-title" style="color:var(--danger)">Stream reconnecting&hellip;</div></div>';
       }
     }
 
-    function startAutoRefresh() {
-      if (refreshTimer) clearInterval(refreshTimer);
-      refreshTimer = setInterval(loadCryptoNews, refreshIntervalMs);
+    function renderPrices(data) {
+      const feed = document.getElementById('priceFeed');
+      feed.innerHTML = '';
+      data.forEach(function(item) {
+        const symbol   = item.symbol.replace('USDT', '');
+        const price    = parseFloat(item.lastPrice).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        const change   = parseFloat(item.priceChangePercent);
+        const high     = parseFloat(item.highPrice).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        const low      = parseFloat(item.lowPrice).toLocaleString(undefined,  { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        const vol      = (parseFloat(item.quoteVolume) / 1e6).toFixed(1);
+        const isUp     = change >= 0;
+        const chgStr   = (isUp ? '+' : '') + change.toFixed(2) + '%';
+        const pillCls  = isUp ? 'sentiment-bull' : 'sentiment-bear';
+        const pillLbl  = isUp ? 'Strength' : 'Compression';
+        const regime   = isUp ? 'Expansion' : 'Absorption';
+
+        feed.innerHTML += `
+          <div class="news-item">
+            <div class="news-item-header">
+              <span class="news-source">${symbol} / USDT</span>
+              <div class="sentiment-pill ${pillCls}">
+                <div class="sentiment-dot"></div>
+                ${pillLbl}
+              </div>
+            </div>
+            <div class="news-title" style="font-family:monospace; font-size:15px; letter-spacing:0.04em;">
+              $${price} <span style="font-size:11px; color:${isUp ? 'var(--bull)' : 'var(--bear)'}">${chgStr}</span>
+            </div>
+            <div class="news-summary" style="font-size:10px;">
+              H: $${high} &nbsp;|&nbsp; L: $${low} &nbsp;|&nbsp; Vol: $${vol}M
+            </div>
+            <div class="news-tag-asset">Liquidity Regime: ${regime}</div>
+          </div>`;
+
+        prevPrices[symbol] = parseFloat(item.lastPrice);
+      });
     }
 
-    // Asset filter handling
-    document.querySelectorAll(".dock-pill").forEach(function(btn) {
-      btn.addEventListener("click", function() {
-        document.querySelectorAll(".dock-pill").forEach(function(b) { b.classList.remove("active"); });
-        btn.classList.add("active");
-        currentAssetFilter = btn.getAttribute("data-asset");
-        loadCryptoNews();
-      });
-    });
+    function updateTimestamp() {
+      document.getElementById('lastUpdated').innerText = 'Verified: ' + new Date().toLocaleTimeString();
+    }
 
-    // Flow toggle handling
-    document.getElementById("flowToggle").querySelectorAll("button").forEach(function(btn) {
-      btn.addEventListener("click", function() {
-        document.getElementById("flowToggle").querySelectorAll("button").forEach(function(b) { b.classList.remove("active"); });
-        btn.classList.add("active");
-        currentFlowFilter = btn.getAttribute("data-flow");
-        loadCryptoNews();
-      });
-    });
+    function startTimer() {
+      setInterval(function() {
+        timeLeft--;
+        const el = document.getElementById('refreshTimer');
+        if (el) el.innerText = 'Next sync: ' + timeLeft + 's';
+        if (timeLeft <= 0) fetchPrices();
+      }, 1000);
+    }
 
-    // Collapse / Minimise dock
-    var dock = document.getElementById("newsDock");
-    var dockCollapseBtn = document.getElementById("doc
+    function toggleDock() {
+      const dock = document.getElementById('newsDock');
+      const btn  = document.getElementById('dockCollapseBtn');
+      dock.classList.toggle('news-dock-minimized');
+      btn.innerText = dock.classList.contains('news-dock-minimized') ? 'Expand' : 'Minimise';
+    }
+
+    // Also wire up the button via id in case onclick attr is stripped
+    document.getElementById('dockCollapseBtn').addEventListener('click', toggleDock);
+
+    // Boot
+    fetchPrices();
+    startTimer();
+  </script>
+</body>
+</html>
