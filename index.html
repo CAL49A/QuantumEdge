@@ -1290,126 +1290,250 @@
     </footer>
   </div>
 
-  <!-- Floating Market Intelligence Dock -->
-  <div class="news-dock" id="newsDock">
-    <div class="news-dock-header">
-      <div class="news-dock-title">
-        <div class="news-dock-title-main">Live Intelligence Feed</div>
-        <div class="news-dock-title-sub" id="lastUpdated">Initialising&hellip;</div>
-      </div>
-      <div class="news-dock-controls">
-        <button class="dock-collapse-btn" id="dockCollapseBtn" onclick="toggleDock()">Minimise</button>
-      </div>
-    </div>
+  <title>Floating Market Feed</title>
 
-    <div class="dock-filter-row">
-      <div class="dock-filter-pills">
-        <div class="pill" style="margin-bottom:0; border-color:var(--accent-soft)">
-          <div class="pill-dot"></div> Live Flows
-        </div>
-      </div>
-    </div>
+<style>
+:root {
+  --bg: #0c0f14;
+  --card: #121722;
+  --text: #d6e0ff;
+  --bull: #00c896;
+  --bear: #ff4d4f;
+}
 
-    <div class="dock-body" id="priceFeed">
-      <div class="news-item">
-        <div class="news-title">Loading Sovereign Flows&hellip;</div>
-      </div>
-    </div>
+/* ── Dock Container ───────────────────────── */
+.news-dock {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 9999;
 
-    <div class="dock-footer">
-      <span>Source: Binance Live API</span>
-      <span id="refreshTimer">Next sync: 30s</span>
+  width: 320px;
+  max-height: 420px;
+
+  background: var(--bg);
+  color: var(--text);
+  border-radius: 12px;
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+/* ── Header ───────────────────────── */
+.news-dock-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 10px;
+  background: var(--card);
+  font-size: 12px;
+}
+
+.news-dock-title-main {
+  font-weight: bold;
+}
+
+.dock-collapse-btn {
+  background: none;
+  border: none;
+  color: var(--text);
+  cursor: pointer;
+}
+
+/* ── Body ───────────────────────── */
+.dock-body {
+  overflow-y: auto;
+}
+
+.news-item {
+  padding: 8px 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.news-title {
+  font-family: monospace;
+  font-size: 14px;
+}
+
+.news-summary {
+  font-size: 10px;
+  opacity: 0.7;
+}
+
+/* ── Footer ───────────────────────── */
+.dock-footer {
+  padding: 6px 10px;
+  font-size: 10px;
+  background: var(--card);
+}
+
+/* ── Minimized ───────────────────────── */
+.news-dock-minimized {
+  max-height: 42px !important;
+  overflow: hidden;
+}
+
+/* ── MOBILE MODE ───────────────────────── */
+@media (max-width: 768px) {
+  .news-dock {
+    width: 92vw;
+    left: 4vw;
+    right: 4vw;
+    bottom: 8px;
+
+    max-height: 10vh; /* KEY CONSTRAINT */
+  }
+
+  .dock-body {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+    gap: 8px;
+    padding: 6px;
+
+    scroll-snap-type: x mandatory;
+  }
+
+  .news-item {
+    min-width: 150px;
+    border: none;
+    background: var(--card);
+    border-radius: 8px;
+
+    scroll-snap-align: start;
+  }
+
+  .news-title {
+    font-size: 11px;
+  }
+
+  .news-summary,
+  .dock-footer {
+    display: none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ── FLOATING DOCK ───────────────────────── -->
+<div class="news-dock" id="newsDock">
+  <div class="news-dock-header">
+    <div>
+      <div class="news-dock-title-main">Live Feed</div>
+      <div id="lastUpdated" style="font-size:10px;">Loading…</div>
     </div>
+    <button class="dock-collapse-btn" id="dockCollapseBtn">Minimise</button>
   </div>
 
-  <script>
-    // Footer year
-    document.getElementById("year").textContent = new Date().getFullYear();
+  <div class="dock-body" id="priceFeed">
+    <div class="news-item">Loading...</div>
+  </div>
 
-    // ── Binance REST price feed ───────────────────────────────────────────────
-    const symbols = ['BTCUSDT', 'ETHUSDT', 'SOLUSDT', 'BNBUSDT', 'XRPUSDT'];
-    let prevPrices = {};
-    let timeLeft = 30;
+  <div class="dock-footer">
+    Binance API • <span id="refreshTimer">30s</span>
+  </div>
+</div>
 
-    async function fetchPrices() {
-      try {
-        const url = 'https://api.binance.com/api/v3/ticker/24hr?symbols=' + JSON.stringify(symbols);
-        const response = await fetch(url);
-        const data = await response.json();
-        renderPrices(data);
-        updateTimestamp();
-        timeLeft = 30;
-      } catch (error) {
-        console.error('Flow disruption:', error);
-        document.getElementById('priceFeed').innerHTML =
-          '<div class="news-item"><div class="news-title" style="color:var(--danger)">Stream reconnecting&hellip;</div></div>';
-      }
-    }
+<!-- ── SCRIPT ───────────────────────── -->
+<script>
+const symbols = ['BTCUSDT','ETHUSDT','SOLUSDT','BNBUSDT','XRPUSDT'];
+let timeLeft = 30;
 
-    function renderPrices(data) {
-      const feed = document.getElementById('priceFeed');
-      feed.innerHTML = '';
-      data.forEach(function(item) {
-        const symbol   = item.symbol.replace('USDT', '');
-        const price    = parseFloat(item.lastPrice).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-        const change   = parseFloat(item.priceChangePercent);
-        const high     = parseFloat(item.highPrice).toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-        const low      = parseFloat(item.lowPrice).toLocaleString(undefined,  { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-        const vol      = (parseFloat(item.quoteVolume) / 1e6).toFixed(1);
-        const isUp     = change >= 0;
-        const chgStr   = (isUp ? '+' : '') + change.toFixed(2) + '%';
-        const pillCls  = isUp ? 'sentiment-bull' : 'sentiment-bear';
-        const pillLbl  = isUp ? 'Strength' : 'Compression';
-        const regime   = isUp ? 'Expansion' : 'Absorption';
+/* Detect mobile */
+function isMobile() {
+  return window.innerWidth <= 768;
+}
 
-        feed.innerHTML += `
-          <div class="news-item">
-            <div class="news-item-header">
-              <span class="news-source">${symbol} / USDT</span>
-              <div class="sentiment-pill ${pillCls}">
-                <div class="sentiment-dot"></div>
-                ${pillLbl}
-              </div>
-            </div>
-            <div class="news-title" style="font-family:monospace; font-size:15px; letter-spacing:0.04em;">
-              $${price} <span style="font-size:11px; color:${isUp ? 'var(--bull)' : 'var(--bear)'}">${chgStr}</span>
-            </div>
-            <div class="news-summary" style="font-size:10px;">
-              H: $${high} &nbsp;|&nbsp; L: $${low} &nbsp;|&nbsp; Vol: $${vol}M
-            </div>
-            <div class="news-tag-asset">Liquidity Regime: ${regime}</div>
-          </div>`;
+/* Fetch data */
+async function fetchPrices() {
+  try {
+    const url = 'https://api.binance.com/api/v3/ticker/24hr?symbols=' + JSON.stringify(symbols);
+    const res = await fetch(url);
+    const data = await res.json();
 
-        prevPrices[symbol] = parseFloat(item.lastPrice);
-      });
-    }
+    renderPrices(data);
+    updateTimestamp();
+    timeLeft = 30;
 
-    function updateTimestamp() {
-      document.getElementById('lastUpdated').innerText = 'Verified: ' + new Date().toLocaleTimeString();
-    }
+  } catch (e) {
+    document.getElementById('priceFeed').innerHTML =
+      '<div class="news-item" style="color:red">Reconnecting...</div>';
+  }
+}
 
-    function startTimer() {
-      setInterval(function() {
-        timeLeft--;
-        const el = document.getElementById('refreshTimer');
-        if (el) el.innerText = 'Next sync: ' + timeLeft + 's';
-        if (timeLeft <= 0) fetchPrices();
-      }, 1000);
-    }
+/* Render UI */
+function renderPrices(data) {
+  const feed = document.getElementById('priceFeed');
+  feed.innerHTML = '';
 
-    function toggleDock() {
-      const dock = document.getElementById('newsDock');
-      const btn  = document.getElementById('dockCollapseBtn');
-      dock.classList.toggle('news-dock-minimized');
-      btn.innerText = dock.classList.contains('news-dock-minimized') ? 'Expand' : 'Minimise';
-    }
+  const mobile = isMobile();
 
-    // Also wire up the button via id in case onclick attr is stripped
-    document.getElementById('dockCollapseBtn').addEventListener('click', toggleDock);
+  data.forEach(item => {
+    const symbol = item.symbol.replace('USDT','');
+    const price  = parseFloat(item.lastPrice).toFixed(2);
+    const change = parseFloat(item.priceChangePercent);
+    const isUp   = change >= 0;
 
-    // Boot
-    fetchPrices();
-    startTimer();
-  </script>
+    const color = isUp ? 'var(--bull)' : 'var(--bear)';
+    const chg   = (isUp ? '+' : '') + change.toFixed(2) + '%';
+
+    feed.innerHTML += `
+      <div class="news-item">
+        <div>${symbol}</div>
+        <div class="news-title">
+          $${price}
+          <span style="color:${color}">${chg}</span>
+        </div>
+        ${
+          mobile ? '' :
+          `<div class="news-summary">
+            H: ${parseFloat(item.highPrice).toFixed(2)} |
+            L: ${parseFloat(item.lowPrice).toFixed(2)}
+          </div>`
+        }
+      </div>
+    `;
+  });
+}
+
+/* Timestamp */
+function updateTimestamp() {
+  document.getElementById('lastUpdated').innerText =
+    'Updated: ' + new Date().toLocaleTimeString();
+}
+
+/* Timer */
+function startTimer() {
+  setInterval(() => {
+    timeLeft--;
+    document.getElementById('refreshTimer').innerText = timeLeft + 's';
+
+    if (timeLeft <= 0) fetchPrices();
+  }, 1000);
+}
+
+/* Toggle */
+function toggleDock() {
+  const dock = document.getElementById('newsDock');
+  const btn  = document.getElementById('dockCollapseBtn');
+
+  dock.classList.toggle('news-dock-minimized');
+  btn.innerText = dock.classList.contains('news-dock-minimized')
+    ? 'Expand'
+    : 'Minimise';
+}
+
+document.getElementById('dockCollapseBtn').addEventListener('click', toggleDock);
+
+/* Boot */
+fetchPrices();
+startTimer();
+</script>
+
 </body>
 </html>
