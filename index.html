@@ -5,1535 +5,597 @@
   <meta charset="UTF-8" />
   <title>Quantum Edge | Sovereign-Grade Strategic Intelligence</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Quantum Edge – discreet, high-trust strategic intelligence for HNWIs, Family Offices, and Institutional Investors." />
+  <meta name="description" content="Quantum Edge - discreet, high-trust strategic intelligence for HNWIs, Family Offices, and Institutional Investors." />
   <style>
     :root {
-      --bg: #050608;
-      --bg-alt: #0c0f13;
-      --card: #10141b;
-      --border-subtle: rgba(255, 255, 255, 0.05);
-      --accent: #d3aa5c;
-      --accent-soft: rgba(211, 170, 92, 0.18);
-      --text-main: #f5f5f5;
-      --text-muted: #a4abb6;
-      --text-soft: #7c8390;
-      --danger: #f25f5c;
-      --bull: #4cc38a;
-      --bear: #ff6b6b;
-      --neutral: #f6c453;
-      --radius-lg: 18px;
-      --radius-xl: 26px;
-      --shadow-soft: 0 28px 80px rgba(0, 0, 0, 0.65);
-      --max-width: 1120px;
+      --bg:#050608; --bg-alt:#0c0f13; --card:#10141b;
+      --border-subtle:rgba(255,255,255,.05);
+      --accent:#d3aa5c; --accent-soft:rgba(211,170,92,.18);
+      --text-main:#f5f5f5; --text-muted:#a4abb6; --text-soft:#7c8390;
+      --danger:#f25f5c; --bull:#4cc38a; --bear:#ff6b6b; --neutral:#f6c453;
+      --radius-lg:18px; --radius-xl:26px;
+      --shadow-soft:0 28px 80px rgba(0,0,0,.65);
+      --max-width:1120px;
     }
+    *{box-sizing:border-box;margin:0;padding:0;}
+    html,body{height:100%;scroll-behavior:smooth;}
+    body{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at top,#131822 0,#050608 52%);color:var(--text-main);line-height:1.6;-webkit-font-smoothing:antialiased;}
+    a{color:inherit;text-decoration:none;}
+    img{max-width:100%;height:auto;display:block;}
+    .page{min-height:100vh;display:flex;flex-direction:column;}
+    .shell{width:100%;max-width:var(--max-width);margin:0 auto;padding:0 20px;}
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    /* Header */
+    header{position:sticky;top:0;z-index:40;backdrop-filter:blur(18px);background:linear-gradient(to bottom,rgba(5,6,8,.94),rgba(5,6,8,.75),transparent);border-bottom:1px solid rgba(255,255,255,.03);}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0 10px;gap:18px;}
+    .nav-left{display:flex;align-items:center;gap:12px;}
+    .brand-mark{width:34px;height:34px;border-radius:999px;border:1px solid rgba(211,170,92,.5);display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 10% 0%,rgba(211,170,92,.18) 0,transparent 52%);box-shadow:0 0 35px rgba(211,170,92,.3);font-family:"Georgia","Times New Roman",serif;font-size:17px;letter-spacing:.12em;}
+    .brand-text{display:flex;flex-direction:column;gap:2px;}
+    .brand-name{font-family:"Georgia","Times New Roman",serif;font-size:15px;letter-spacing:.18em;text-transform:uppercase;}
+    .brand-sub{font-size:11px;text-transform:uppercase;letter-spacing:.24em;color:var(--text-soft);}
+    .nav-links{display:flex;align-items:center;gap:18px;font-size:13px;text-transform:uppercase;letter-spacing:.16em;color:var(--text-soft);}
+    .nav-links a{padding-bottom:4px;border-bottom:1px solid transparent;transition:color .2s,border-color .2s;}
+    .nav-links a:hover{color:var(--text-main);border-color:rgba(211,170,92,.6);}
+    .nav-cta{border-radius:999px;border:1px solid rgba(211,170,92,.55);padding:7px 16px 8px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);background:radial-gradient(circle at top left,rgba(211,170,92,.2),transparent 55%);display:flex;align-items:center;gap:6px;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s;}
+    .nav-cta:hover{background:radial-gradient(circle at top,rgba(211,170,92,.28),transparent 65%);box-shadow:0 0 28px rgba(211,170,92,.28);transform:translateY(-1px);}
 
-    html, body {
-      height: 100%;
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #131822 0, #050608 52%);
-      color: var(--text-main);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    img {
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
-
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .shell {
-      width: 100%;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 40;
-      backdrop-filter: blur(18px);
-      background: linear-gradient(to bottom, rgba(5, 6, 8, 0.94), rgba(5, 6, 8, 0.75), transparent);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 0 10px;
-      gap: 18px;
-    }
-
-    .nav-left {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .brand-mark {
-      width: 34px;
-      height: 34px;
-      border-radius: 999px;
-      border: 1px solid rgba(211, 170, 92, 0.5);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: radial-gradient(circle at 10% 0%, rgba(211,170,92,0.18) 0, transparent 52%);
-      box-shadow: 0 0 35px rgba(211, 170, 92, 0.3);
-      font-family: "Georgia", "Times New Roman", serif;
-      font-size: 17px;
-      letter-spacing: 0.12em;
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .brand-name {
-      font-family: "Georgia", "Times New Roman", serif;
-      font-size: 15px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
-
-    .brand-sub {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.24em;
-      color: var(--text-soft);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 18px;
-      font-size: 13px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--text-soft);
-    }
-
-    .nav-links a {
-      padding-bottom: 4px;
-      border-bottom: 1px solid transparent;
-      transition: color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
-    }
-
-    .nav-links a:hover {
-      color: var(--text-main);
-      border-color: rgba(211, 170, 92, 0.6);
-      opacity: 0.9;
-    }
-
-    .nav-cta {
-      border-radius: 999px;
-      border: 1px solid rgba(211, 170, 92, 0.55);
-      padding: 7px 16px 8px;
-      font-size: 11px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent);
-      background: radial-gradient(circle at top left, rgba(211, 170, 92, 0.2), transparent 55%);
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      cursor: pointer;
-      transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
-    }
-
-    .nav-cta span {
-      font-size: 14px;
-      transform: translateY(0.5px);
-    }
-
-    .nav-cta:hover {
-      background: radial-gradient(circle at top, rgba(211, 170, 92, 0.28), transparent 65%);
-      box-shadow: 0 0 28px rgba(211, 170, 92, 0.28);
-      transform: translateY(-1px);
-    }
-
-    main {
-      flex: 1;
-    }
-
-    section {
-      padding: 56px 0;
-    }
+    main{flex:1;}
+    section{padding:56px 0;}
 
     /* Hero */
-
-    .hero {
-      padding-top: 64px;
-      padding-bottom: 44px;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
-      gap: 40px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.24em;
-      color: var(--text-soft);
-      margin-bottom: 6px;
-    }
-
-    .hero-title {
-      font-family: "Georgia", "Times New Roman", serif;
-      font-size: clamp(32px, 4.1vw, 42px);
-      line-height: 1.15;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      margin-bottom: 18px;
-    }
-
-    .hero-title span {
-      color: var(--accent);
-    }
-
-    .hero-subtitle {
-      max-width: 520px;
-      font-size: 14px;
-      color: var(--text-muted);
-      margin-bottom: 24px;
-    }
-
-    .hero-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 26px;
-    }
-
-    .pill {
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.07);
-      padding: 6px 12px;
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--text-soft);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: radial-gradient(circle at top, rgba(255,255,255,0.04), transparent 60%);
-    }
-
-    .pill-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-      background: var(--accent);
-      box-shadow: 0 0 10px rgba(211, 170, 92, 0.7);
-    }
-
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 24px;
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--text-soft);
-    }
-
-    .hero-meta strong {
-      display: block;
-      font-size: 13px;
-      color: var(--text-main);
-      margin-bottom: 2px;
-      letter-spacing: 0.12em;
-    }
-
-    .hero-card {
-      border-radius: var(--radius-xl);
-      background: radial-gradient(circle at 0% -30%, rgba(211,170,92,0.18), transparent 60%), var(--card);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      box-shadow: var(--shadow-soft);
-      padding: 22px 22px 20px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      border-radius: inherit;
-      border: 1px solid transparent;
-      background: radial-gradient(circle at 0 0, rgba(211, 170, 92, 0.35), transparent 55%);
-      opacity: 0.45;
-      mix-blend-mode: screen;
-      pointer-events: none;
-    }
-
-    .hero-card-inner {
-      position: relative;
-      z-index: 1;
-    }
-
-    .hc-label {
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-soft);
-      margin-bottom: 14px;
-    }
-
-    .hc-main {
-      font-family: "Georgia", "Times New Roman", serif;
-      font-size: 16px;
-      line-height: 1.4;
-      margin-bottom: 18px;
-    }
-
-    .hc-main span {
-      color: var(--accent);
-    }
-
-    .hc-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      font-size: 11px;
-      color: var(--text-soft);
-    }
-
-    .hc-item strong {
-      display: block;
-      font-size: 12px;
-      color: var(--text-main);
-      margin-bottom: 2px;
-    }
-
-    .hc-seal {
-      position: absolute;
-      bottom: 18px;
-      right: 18px;
-      width: 70px;
-      height: 70px;
-      border-radius: 999px;
-      border: 1px solid rgba(211, 170, 92, 0.6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 9px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: rgba(211, 170, 92, 0.8);
-      backdrop-filter: blur(10px);
-      background: radial-gradient(circle at top, rgba(0,0,0,0.2), transparent 75%);
-      text-align: center;
-      line-height: 1.4;
-    }
-
-    .section-title {
-      font-family: "Georgia", "Times New Roman", serif;
-      font-size: 18px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-
-    .section-subtitle {
-      font-size: 13px;
-      color: var(--text-muted);
-      max-width: 520px;
-      margin-bottom: 24px;
-    }
-
-    .pillars-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .pillar-card {
-      border-radius: var(--radius-lg);
-      background: var(--bg-alt);
-      border: 1px solid var(--border-subtle);
-      padding: 16px 16px 18px;
-      min-height: 160px;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .pillar-tag {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--accent);
-      margin-bottom: 6px;
-    }
-
-    .pillar-title {
-      font-size: 14px;
-      margin-bottom: 8px;
-    }
-
-    .pillar-body {
-      font-size: 12px;
-      color: var(--text-soft);
-    }
-
-    .pillar-halo {
-      position: absolute;
-      inset: -40%;
-      opacity: 0.16;
-      background: radial-gradient(circle at 0 0, rgba(211, 170, 92, 0.6), transparent 55%);
-      pointer-events: none;
-    }
-
-    .services {
-      border-top: 1px solid var(--border-subtle);
-      border-bottom: 1px solid var(--border-subtle);
-      background: radial-gradient(circle at top, rgba(211,170,92,0.06), transparent 70%);
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
-      gap: 28px;
-      align-items: flex-start;
-    }
-
-    .service-list {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      font-size: 12px;
-      color: var(--text-soft);
-    }
-
-    .service-item {
-      border-radius: 12px;
-      border: 1px solid var(--border-subtle);
-      padding: 12px 13px;
-      background: rgba(6, 8, 12, 0.78);
-    }
-
-    .service-item strong {
-      display: block;
-      font-size: 12px;
-      color: var(--text-main);
-      margin-bottom: 4px;
-    }
-
-    .badge-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 6px;
-    }
-
-    .badge {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--text-soft);
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      padding: 4px 8px;
-      background: radial-gradient(circle at top, rgba(255,255,255,0.04), transparent 60%);
-    }
-
-    .services-card {
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--accent-soft);
-      background: radial-gradient(circle at 0 0, rgba(211,170,92,0.18), transparent 55%), var(--card);
-      padding: 18px 18px 16px;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .sc-head {
-      font-size: 12px;
-      color: var(--text-muted);
-      margin-bottom: 8px;
-    }
-
-    .sc-main {
-      font-family: "Georgia", "Times New Roman", serif;
-      font-size: 16px;
-      line-height: 1.45;
-      margin-bottom: 16px;
-    }
-
-    .sc-main span {
-      color: var(--accent);
-    }
-
-    .sc-metrics {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      font-size: 11px;
-      color: var(--text-soft);
-    }
-
-    .sc-metrics strong {
-      display: block;
-      font-size: 13px;
-      color: var(--text-main);
-    }
-
-    .insight-quote {
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--border-subtle);
-      background: linear-gradient(135deg, rgba(10,12,18,0.96), rgba(5,6,8,0.98));
-      padding: 22px 20px 20px;
-      position: relative;
-      overflow: hidden;
-      margin-top: 10px;
-    }
-
-    .insight-quote::before {
-      content: "\201C";
-      position: absolute;
-      top: -34px;
-      left: 16px;
-      font-size: 80px;
-      color: rgba(211, 170, 92, 0.12);
-      font-family: "Georgia", "Times New Roman", serif;
-    }
-
-    .iq-body {
-      font-size: 13px;
-      color: var(--text-muted);
-      max-width: 680px;
-    }
-
-    .iq-body span {
-      color: var(--accent);
-    }
-
-    .iq-meta {
-      margin-top: 14px;
-      font-size: 11px;
-      color: var(--text-soft);
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-    }
-
-    .contact {
-      padding-top: 40px;
-      padding-bottom: 60px;
-    }
-
-    .contact-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-      gap: 28px;
-      align-items: flex-start;
-    }
-
-    .contact-card {
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--border-subtle);
-      background: rgba(5, 6, 8, 0.95);
-      padding: 18px 18px 20px;
-    }
-
-    .contact-card h3 {
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      margin-bottom: 8px;
-    }
-
-    .contact-card p {
-      font-size: 13px;
-      color: var(--text-muted);
-      margin-bottom: 14px;
-    }
-
-    .contact-meta {
-      font-size: 11px;
-      color: var(--text-soft);
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      margin-bottom: 8px;
-    }
-
-    .contact-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      color: var(--accent);
-      border-bottom: 1px solid rgba(211,170,92,0.6);
-      padding-bottom: 2px;
-    }
-
-    .contact-link span {
-      font-size: 14px;
-    }
-
-    .contact-note {
-      font-size: 11px;
-      color: var(--text-soft);
-      margin-top: 10px;
-      max-width: 320px;
-    }
-
-    .contact-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 10px;
-    }
-
-    .contact-tag {
-      border-radius: 999px;
-      border: 1px solid var(--border-subtle);
-      padding: 5px 10px;
-      font-size: 10px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--text-soft);
-    }
-
-    footer {
-      border-top: 1px solid var(--border-subtle);
-      padding: 16px 0 26px;
-      font-size: 11px;
-      color: var(--text-soft);
-    }
-
-    .footer-inner {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 8px;
-      justify-content: space-between;
-    }
-
-    .footer-inner span {
-      opacity: 0.9;
-    }
-
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-    }
-
-    .footer-links a {
-      opacity: 0.8;
-    }
-
-    .footer-links a:hover {
-      opacity: 1;
-      color: var(--accent);
-    }
-
-    /* Floating Intelligence Dock */
-
+    .hero{padding-top:64px;padding-bottom:44px;}
+    .hero-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:40px;align-items:center;}
+    .eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.24em;color:var(--text-soft);margin-bottom:6px;}
+    .hero-title{font-family:"Georgia","Times New Roman",serif;font-size:clamp(32px,4.1vw,42px);line-height:1.15;letter-spacing:.04em;text-transform:uppercase;margin-bottom:18px;}
+    .hero-title span{color:var(--accent);}
+    .hero-subtitle{max-width:520px;font-size:14px;color:var(--text-muted);margin-bottom:24px;}
+    .hero-pills{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px;}
+    .pill{border-radius:999px;border:1px solid rgba(255,255,255,.07);padding:6px 12px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--text-soft);display:inline-flex;align-items:center;gap:6px;background:radial-gradient(circle at top,rgba(255,255,255,.04),transparent 60%);}
+    .pill-dot{width:6px;height:6px;border-radius:999px;background:var(--accent);box-shadow:0 0 10px rgba(211,170,92,.7);}
+    .hero-meta{display:flex;flex-wrap:wrap;gap:24px;font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--text-soft);}
+    .hero-meta strong{display:block;font-size:13px;color:var(--text-main);margin-bottom:2px;letter-spacing:.12em;}
+    .hero-card{border-radius:var(--radius-xl);background:radial-gradient(circle at 0% -30%,rgba(211,170,92,.18),transparent 60%),var(--card);border:1px solid rgba(255,255,255,.05);box-shadow:var(--shadow-soft);padding:22px 22px 20px;position:relative;overflow:hidden;}
+    .hero-card::before{content:"";position:absolute;inset:0;border-radius:inherit;border:1px solid transparent;background:radial-gradient(circle at 0 0,rgba(211,170,92,.35),transparent 55%);opacity:.45;mix-blend-mode:screen;pointer-events:none;}
+    .hero-card-inner{position:relative;z-index:1;}
+    .hc-label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-soft);margin-bottom:14px;}
+    .hc-main{font-family:"Georgia","Times New Roman",serif;font-size:16px;line-height:1.4;margin-bottom:18px;}
+    .hc-main span{color:var(--accent);}
+    .hc-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;font-size:11px;color:var(--text-soft);}
+    .hc-item strong{display:block;font-size:12px;color:var(--text-main);margin-bottom:2px;}
+    .hc-seal{position:absolute;bottom:18px;right:18px;width:70px;height:70px;border-radius:999px;border:1px solid rgba(211,170,92,.6);display:flex;align-items:center;justify-content:center;font-size:9px;text-transform:uppercase;letter-spacing:.18em;color:rgba(211,170,92,.8);backdrop-filter:blur(10px);background:radial-gradient(circle at top,rgba(0,0,0,.2),transparent 75%);text-align:center;line-height:1.4;}
+
+    /* Sections */
+    .section-title{font-family:"Georgia","Times New Roman",serif;font-size:18px;letter-spacing:.18em;text-transform:uppercase;margin-bottom:8px;}
+    .section-subtitle{font-size:13px;color:var(--text-muted);max-width:520px;margin-bottom:24px;}
+    .pillars-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;}
+    .pillar-card{border-radius:var(--radius-lg);background:var(--bg-alt);border:1px solid var(--border-subtle);padding:16px 16px 18px;min-height:160px;position:relative;overflow:hidden;}
+    .pillar-tag{font-size:10px;text-transform:uppercase;letter-spacing:.18em;color:var(--accent);margin-bottom:6px;}
+    .pillar-title{font-size:14px;margin-bottom:8px;}
+    .pillar-body{font-size:12px;color:var(--text-soft);}
+    .pillar-halo{position:absolute;inset:-40%;opacity:.16;background:radial-gradient(circle at 0 0,rgba(211,170,92,.6),transparent 55%);pointer-events:none;}
+    .services{border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);background:radial-gradient(circle at top,rgba(211,170,92,.06),transparent 70%);}
+    .services-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:28px;align-items:flex-start;}
+    .service-list{display:flex;flex-direction:column;gap:14px;font-size:12px;color:var(--text-soft);}
+    .service-item{border-radius:12px;border:1px solid var(--border-subtle);padding:12px 13px;background:rgba(6,8,12,.78);}
+    .service-item strong{display:block;font-size:12px;color:var(--text-main);margin-bottom:4px;}
+    .badge-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px;}
+    .badge{font-size:10px;text-transform:uppercase;letter-spacing:.16em;color:var(--text-soft);border-radius:999px;border:1px solid rgba(255,255,255,.06);padding:4px 8px;background:radial-gradient(circle at top,rgba(255,255,255,.04),transparent 60%);}
+    .services-card{border-radius:var(--radius-xl);border:1px solid var(--accent-soft);background:radial-gradient(circle at 0 0,rgba(211,170,92,.18),transparent 55%),var(--card);padding:18px 18px 16px;box-shadow:var(--shadow-soft);}
+    .sc-head{font-size:12px;color:var(--text-muted);margin-bottom:8px;}
+    .sc-main{font-family:"Georgia","Times New Roman",serif;font-size:16px;line-height:1.45;margin-bottom:16px;}
+    .sc-main span{color:var(--accent);}
+    .sc-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;font-size:11px;color:var(--text-soft);}
+    .sc-metrics strong{display:block;font-size:13px;color:var(--text-main);}
+    .insight-quote{border-radius:var(--radius-xl);border:1px solid var(--border-subtle);background:linear-gradient(135deg,rgba(10,12,18,.96),rgba(5,6,8,.98));padding:22px 20px 20px;position:relative;overflow:hidden;margin-top:10px;}
+    .insight-quote::before{content:"\201C";position:absolute;top:-34px;left:16px;font-size:80px;color:rgba(211,170,92,.12);font-family:"Georgia","Times New Roman",serif;}
+    .iq-body{font-size:13px;color:var(--text-muted);max-width:680px;}
+    .iq-body span{color:var(--accent);}
+    .iq-meta{margin-top:14px;font-size:11px;color:var(--text-soft);text-transform:uppercase;letter-spacing:.18em;}
+
+    /* Contact */
+    .contact{padding-top:40px;padding-bottom:60px;}
+    .contact-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:28px;align-items:flex-start;}
+    .contact-card{border-radius:var(--radius-xl);border:1px solid var(--border-subtle);background:rgba(5,6,8,.95);padding:18px 18px 20px;}
+    .contact-card h3{font-size:14px;text-transform:uppercase;letter-spacing:.16em;margin-bottom:8px;}
+    .contact-card p{font-size:13px;color:var(--text-muted);margin-bottom:14px;}
+    .contact-meta{font-size:11px;color:var(--text-soft);text-transform:uppercase;letter-spacing:.16em;margin-bottom:8px;}
+    .contact-link{display:inline-flex;align-items:center;gap:6px;font-size:12px;color:var(--accent);border-bottom:1px solid rgba(211,170,92,.6);padding-bottom:2px;cursor:pointer;}
+    .contact-link span{font-size:14px;}
+    .contact-note{font-size:11px;color:var(--text-soft);margin-top:10px;max-width:320px;}
+    .contact-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+    .contact-tag{border-radius:999px;border:1px solid var(--border-subtle);padding:5px 10px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--text-soft);}
+
+    /* Footer */
+    footer{border-top:1px solid var(--border-subtle);padding:16px 0 26px;font-size:11px;color:var(--text-soft);}
+    .footer-inner{display:flex;flex-wrap:wrap;align-items:center;gap:8px;justify-content:space-between;}
+    .footer-links{display:flex;flex-wrap:wrap;gap:14px;}
+    .footer-links a{opacity:.8;}
+    .footer-links a:hover{opacity:1;color:var(--accent);}
+
+    /* ── Intelligence Dock ── */
     .news-dock {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      width: 360px;
-      max-height: 72vh;
-      background: rgba(5, 6, 8, 0.98);
-      border-radius: 20px;
-      border: 1px solid rgba(211,170,92,0.35);
-      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.85);
-      display: flex;
-      flex-direction: column;
-      backdrop-filter: blur(12px);
-      z-index: 60;
-      overflow: hidden;
-      font-size: 12px;
-      transition: max-height 0.3s ease;
+      position:fixed; right:20px; bottom:20px;
+      width:340px;
+      background:rgba(5,6,8,.97);
+      border-radius:16px;
+      border:1px solid rgba(211,170,92,.28);
+      box-shadow:0 16px 48px rgba(0,0,0,.8);
+      display:flex; flex-direction:column;
+      backdrop-filter:blur(16px);
+      z-index:60; overflow:hidden;
+      font-size:12px;
+      /* COLLAPSED by default — slim 42px header only */
+      max-height:42px;
+      transition:max-height .38s cubic-bezier(.4,0,.2,1);
     }
-
-    .news-dock.news-dock-minimized {
-      max-height: 44px;
-    }
+    .news-dock.dock-expanded { max-height:68vh; }
 
     .news-dock-header {
-      padding: 10px 14px 8px;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-      flex-shrink: 0;
+      display:flex; align-items:center; justify-content:space-between;
+      padding:10px 14px; flex-shrink:0; cursor:pointer; user-select:none;
+      min-height:42px;
     }
+    .dock-title-group { display:flex; align-items:center; gap:8px; }
+    .dock-live-dot {
+      width:7px; height:7px; border-radius:999px;
+      background:var(--bull); box-shadow:0 0 8px var(--bull);
+      flex-shrink:0; animation:pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot{0%,100%{opacity:1;}50%{opacity:.35;}}
+    .dock-title-text { display:flex; flex-direction:column; gap:1px; }
+    .dock-title-main { font-size:10px; text-transform:uppercase; letter-spacing:.2em; color:var(--accent); font-weight:600; }
+    .dock-title-sub  { font-size:9px; color:var(--text-soft); letter-spacing:.06em; }
+    .dock-chevron { font-size:9px; color:var(--text-soft); transition:transform .3s; line-height:1; }
+    .news-dock.dock-expanded .dock-chevron { transform:rotate(180deg); }
 
-    .news-dock-title {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
+    /* Mobile ticker strip (horizontal, only on mobile, shown when collapsed) */
+    .dock-ticker {
+      display:none;
+      gap:14px; padding:4px 12px 8px;
+      overflow-x:auto; scrollbar-width:none;
+      flex-shrink:0;
     }
+    .dock-ticker::-webkit-scrollbar{display:none;}
+    .ticker-item{display:flex;flex-direction:column;align-items:center;min-width:58px;font-size:9px;color:var(--text-soft);text-transform:uppercase;letter-spacing:.08em;gap:1px;}
+    .ticker-price{font-family:monospace;font-size:11px;color:var(--text-main);font-weight:600;}
+    .ticker-chg{font-size:9px;font-weight:700;}
 
-    .news-dock-title-main {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--accent);
-    }
-
-    .news-dock-title-sub {
-      font-size: 11px;
-      color: var(--text-soft);
-    }
-
-    .news-dock-controls {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .dock-pill {
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.09);
-      padding: 4px 8px;
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--text-soft);
-      background: rgba(10, 12, 18, 0.94);
-      cursor: pointer;
-      white-space: nowrap;
-    }
-
-    .dock-pill.active {
-      border-color: rgba(211,170,92,0.7);
-      color: var(--accent);
-      background: radial-gradient(circle at top, rgba(211,170,92,0.18), transparent 65%);
-    }
-
-    .dock-toggle {
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.09);
-      padding: 2px;
-      display: flex;
-      gap: 2px;
-      background: rgba(10,12,18,0.96);
-    }
-
-    .dock-toggle button {
-      border: none;
-      background: transparent;
-      font-size: 9px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      padding: 4px 6px;
-      color: var(--text-soft);
-      border-radius: 999px;
-      cursor: pointer;
-    }
-
-    .dock-toggle button.active {
-      background: radial-gradient(circle at top, rgba(211,170,92,0.2), transparent 70%);
-      color: var(--accent);
-    }
-
-    .dock-filter-row {
-      padding: 6px 10px;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      align-items: center;
-      justify-content: space-between;
-      flex-shrink: 0;
-    }
-
-    .dock-filter-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .dock-body {
-      padding: 10px;
-      overflow-y: auto;
-      flex: 1;
-    }
+    .dock-body { padding:8px; overflow-y:auto; flex:1; overscroll-behavior:contain; }
 
     .dock-footer {
-      padding: 6px 10px 8px;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 10px;
-      color: var(--text-soft);
-      flex-shrink: 0;
+      padding:5px 12px 7px; border-top:1px solid rgba(255,255,255,.04);
+      display:flex; align-items:center; justify-content:space-between;
+      font-size:9px; color:var(--text-soft); flex-shrink:0; letter-spacing:.06em;
     }
 
-    .dock-footer span {
-      opacity: 0.9;
+    .feed-section-label { font-size:9px; text-transform:uppercase; letter-spacing:.2em; color:var(--accent); padding:6px 4px 3px; opacity:.65; }
+
+    .news-item { border-radius:10px; border:1px solid rgba(255,255,255,.05); background:rgba(10,13,20,.92); padding:9px 10px 8px; margin-bottom:6px; }
+    .news-item-header { display:flex; justify-content:space-between; align-items:center; gap:6px; margin-bottom:4px; }
+    .news-source { font-size:9px; text-transform:uppercase; letter-spacing:.14em; color:var(--text-soft); }
+
+    .sentiment-pill { display:inline-flex; align-items:center; gap:3px; border-radius:999px; padding:2px 6px; font-size:8px; text-transform:uppercase; letter-spacing:.12em; border:1px solid rgba(255,255,255,.1); flex-shrink:0; }
+    .sentiment-dot { width:5px; height:5px; border-radius:999px; }
+    .sentiment-bull { border-color:rgba(76,195,138,.4); color:var(--bull); }
+    .sentiment-bull .sentiment-dot { background:var(--bull); box-shadow:0 0 6px rgba(76,195,138,.6); }
+    .sentiment-bear { border-color:rgba(255,107,107,.4); color:var(--bear); }
+    .sentiment-bear .sentiment-dot { background:var(--bear); box-shadow:0 0 6px rgba(255,107,107,.6); }
+    .sentiment-neutral { border-color:rgba(246,196,83,.4); color:var(--neutral); }
+    .sentiment-neutral .sentiment-dot { background:var(--neutral); }
+
+    .news-title { font-size:12px; color:var(--text-main); margin-bottom:2px; font-family:monospace; letter-spacing:.02em; }
+    .news-summary { font-size:10px; color:var(--text-soft); margin-top:2px; }
+    .news-tag-asset { font-size:9px; text-transform:uppercase; letter-spacing:.12em; color:var(--text-soft); opacity:.65; margin-top:3px; }
+
+    /* Responsive */
+    @media(max-width:900px){
+      .hero-grid,.services-grid,.contact-grid{grid-template-columns:minmax(0,1fr);}
+      .hero{padding-top:40px;}
     }
-
-    .news-item {
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.06);
-      background: rgba(10,12,18,0.96);
-      padding: 10px 10px 9px;
-      margin-bottom: 8px;
+    @media(max-width:720px){
+      .nav-links{display:none;}
+      .pillars-grid{grid-template-columns:minmax(0,1fr);}
     }
-
-    .news-item-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 5px;
+    @media(max-width:480px){
+      section{padding:42px 0;}
+      .hero{padding-top:34px;}
+      .hero-title{font-size:28px;}
+      .hc-seal{width:60px;height:60px;bottom:14px;right:14px;}
     }
-
-    .news-source {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--text-soft);
-    }
-
-    .news-metadata {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 10px;
-    }
-
-    .sentiment-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      border-radius: 999px;
-      padding: 2px 7px;
-      font-size: 9px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      border: 1px solid rgba(255,255,255,0.12);
-    }
-
-    .sentiment-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 999px;
-    }
-
-    .sentiment-bull {
-      border-color: rgba(76,195,138,0.5);
-      color: var(--bull);
-    }
-    .sentiment-bull .sentiment-dot {
-      background: var(--bull);
-      box-shadow: 0 0 10px rgba(76,195,138,0.5);
-    }
-
-    .sentiment-bear {
-      border-color: rgba(255,107,107,0.5);
-      color: var(--bear);
-    }
-    .sentiment-bear .sentiment-dot {
-      background: var(--bear);
-      box-shadow: 0 0 10px rgba(255,107,107,0.5);
-    }
-
-    .sentiment-neutral {
-      border-color: rgba(246,196,83,0.5);
-      color: var(--neutral);
-    }
-    .sentiment-neutral .sentiment-dot {
-      background: var(--neutral);
-      box-shadow: 0 0 10px rgba(246,196,83,0.5);
-    }
-
-    .news-title {
-      font-size: 12px;
-      margin-bottom: 4px;
-      color: var(--text-main);
-    }
-
-    .news-summary {
-      font-size: 11px;
-      color: var(--text-muted);
-      margin-bottom: 4px;
-    }
-
-    .news-link {
-      font-size: 10px;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      border-bottom: 1px solid rgba(211,170,92,0.4);
-      display: inline-flex;
-      gap: 4px;
-      align-items: center;
-    }
-
-    .news-tag-asset {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--text-soft);
-      opacity: 0.8;
-      margin-top: 4px;
-    }
-
-    .dock-collapse-btn {
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.13);
-      background: rgba(5,6,8,0.95);
-      color: var(--text-soft);
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      padding: 3px 7px;
-      cursor: pointer;
-    }
-
-    @media (max-width: 900px) {
-      .hero-grid,
-      .services-grid,
-      .contact-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .hero {
-        padding-top: 40px;
-      }
-
-      header {
-        backdrop-filter: blur(14px);
-      }
-
-      .news-dock {
-        right: 10px;
-        bottom: 10px;
-        width: calc(100% - 20px);
-        max-width: 420px;
-      }
-    }
-
-    @media (max-width: 720px) {
-      .nav-links {
-        display: none;
-      }
-
-      .pillars-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .hero-card {
-        margin-top: 6px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      section {
-        padding: 42px 0;
-      }
-
-      .hero {
-        padding-top: 34px;
-      }
-
-      .hero-title {
-        font-size: 28px;
-      }
-
-      .hc-seal {
-        width: 60px;
-        height: 60px;
-        bottom: 14px;
-        right: 14px;
-      }
-
-      .news-dock {
-        width: calc(100% - 16px);
-        right: 8px;
-        bottom: 8px;
-      }
+    @media(max-width:768px){
+      .news-dock { right:8px; bottom:8px; width:calc(100% - 16px); max-width:100%; border-radius:12px; }
+      .news-dock.dock-expanded { max-height:52vh; }
+      .dock-ticker { display:flex; }
     }
   </style>
 </head>
 <body>
-  <div class="page">
-    <!-- Header -->
-    <header>
-      <div class="shell">
-        <nav class="nav">
-          <div class="nav-left">
-            <div class="brand-mark">QE</div>
-            <div class="brand-text">
-              <div class="brand-name">Quantum Edge</div>
-              <div class="brand-sub">Strategic Intelligence</div>
-            </div>
-          </div>
-          <div class="nav-links">
-            <a href="#about">About</a>
-            <a href="#model">Framework</a>
-            <a href="#mandates">Mandates</a>
-            <a href="#contact">Access</a>
-          </div>
-          <a href="#contact" class="nav-cta">
-            PRIVATE ACCESS
-            <span>&#8599;</span>
-          </a>
-        </nav>
-      </div>
-    </header>
+<div class="page">
 
-    <main>
-      <!-- Hero -->
-      <section class="hero" id="top">
-        <div class="shell">
-          <div class="hero-grid">
-            <div>
-              <div class="eyebrow">Discreet Macro &amp; Digital-Asset Intelligence</div>
-              <div class="eyebrow">Mr. Paul Singh, Founder</div>
-              <div class="eyebrow">Chief Asymmetric Strategy Architect (CASA)</div>
-              <div class="eyebrow">DIFC, Dubai. UAE </div>
-              <h1 class="hero-title">
-                Sovereign-grade insight<br />
-                for <span>asymmetric capital</span>
-              </h1>
-              <p class="hero-subtitle">
-                Quantum Intellectual Thinking navigating Bitcoin, digital assets, and macro regimes using non-linear reasoning, behavioral signals, and deep risk intelligence.
-              </p>
-
-              <div class="hero-pills">
-                <div class="pill">
-                  <div class="pill-dot"></div>
-                  Intelligence Perspective
-                </div>
-                <div class="pill">
-                  <div class="pill-dot"></div>
-                  Multi-asset, crypto-native intelligence
-                </div>
-                <div class="pill">
-                  <div class="pill-dot"></div>
-                  Narrative, flow &amp; structure alignment
-                </div>
-              </div>
-
-              <div class="hero-meta">
-                <div>
-                  <strong>Mandate</strong>
-                  Strategic advisory across Bitcoin, digital assets, macro &amp; liquidity regimes.
-                </div>
-                <div>
-                  <strong>Operating Style</strong>
-                  Early pattern recognition. Quiet positioning. Institutional discipline.
-                </div>
-              </div>
-            </div>
-
-            <aside class="hero-card">
-              <div class="hero-card-inner">
-                <div class="hc-label">Quantum Edge Working Model</div>
-                <div class="hc-main">
-                  Where others see <span>volatility</span>, we see the architecture of
-                  <span>regime change</span>.
-                </div>
-                <div class="hc-grid">
-                  <div class="hc-item">
-                    <strong>Asymmetry Engine</strong>
-                    Identifies non-linear payoff zones across BTC, ETH, SOL, stablecoins &amp; macro.
-                  </div>
-                  <div class="hc-item">
-                    <strong>Risk Cartography</strong>
-                    Maps liquidity, leverage, and regulatory stress to build sovereign-grade resilience.
-                  </div>
-                  <div class="hc-item">
-                    <strong>Perception Layer</strong>
-                    Tracks sentiment dislocations between retail narratives and institutional flow.
-                  </div>
-                  <div class="hc-item">
-                    <strong>Timing Lens</strong>
-                    Focuses on second-order effects where consensus arrives last and returns are made.
-                  </div>
-                </div>
-                <div class="hc-seal">QUIET<br />ADVANTAGE</div>
-              </div>
-            </aside>
+  <header>
+    <div class="shell">
+      <nav class="nav">
+        <div class="nav-left">
+          <div class="brand-mark">QE</div>
+          <div class="brand-text">
+            <div class="brand-name">Quantum Edge</div>
+            <div class="brand-sub">Strategic Intelligence</div>
           </div>
         </div>
-      </section>
-
-      <!-- Pillars -->
-      <section id="about">
-        <div class="shell">
-          <h2 class="section-title">Strategic Pillars</h2>
-          <p class="section-subtitle">
-            Quantum Edge operates at the intersection of macro, digital assets, and human behavior. The mandate is simple: protect and compound sophisticated capital through structural clarity, not noise.
-          </p>
-
-          <div class="pillars-grid">
-            <article class="pillar-card">
-              <div class="pillar-halo"></div>
-              <div class="pillar-tag">01 &middot; Strategic Asymmetry</div>
-              <div class="pillar-title">Edges where others see failure</div>
-              <p class="pillar-body">
-                We treat slow Bitcoin, high ETH gas, congested Solana and fragile stablecoins not as flaws, but as signal-rich stress points. Asymmetry appears where infrastructure strain meets structural adoption.
-              </p>
-            </article>
-
-            <article class="pillar-card">
-              <div class="pillar-tag">02 &middot; Timing &amp; Second-Order Effects</div>
-              <div class="pillar-title">Positioning before the narrative</div>
-              <p class="pillar-body">
-                We don&rsquo;t chase &ldquo;what just happened.&rdquo; We map how liquidity, regulation, and institutional flows will react next and how those reactions will be mispriced by conventional models.
-              </p>
-            </article>
-
-            <article class="pillar-card">
-              <div class="pillar-tag">03 &middot; Psychology of Capital</div>
-              <div class="pillar-title">Understanding how money feels</div>
-              <p class="pillar-body">
-                HNWI, Family Offices, and Institutions don&rsquo;t move on spreadsheets alone. They move on fear, pride, reputational risk and opportunity cost. We translate this psychology into positioning decisions.
-              </p>
-            </article>
-          </div>
+        <div class="nav-links">
+          <a href="#about">About</a>
+          <a href="#model">Framework</a>
+          <a href="#mandates">Mandates</a>
+          <a href="#contact">Access</a>
         </div>
-      </section>
-
-      <!-- Framework / Model -->
-      <section id="model" class="services">
-        <div class="shell">
-          <h2 class="section-title">Quantum Edge Framework</h2>
-          <p class="section-subtitle">
-            A working model designed for sovereign funds and serious allocators: one that integrates macro, digital assets, and behavioral signals into a single, coherent decision architecture.
-          </p>
-
-          <div class="services-grid">
-            <div>
-              <div class="service-list">
-                <div class="service-item">
-                  <strong>Multi-Layer Market Map</strong>
-                  <p>
-                    Bitcoin as apex collateral. Ethereum as settlement &amp; structure. Solana &amp; BNB as execution rails. Stablecoins and USDT risk as liquidity weather.
-                  </p>
-                  <div class="badge-row">
-                    <span class="badge">BTC / ETH / SOL / BNB</span>
-                    <span class="badge">STABLECOIN RISK</span>
-                  </div>
-                </div>
-
-                <div class="service-item">
-                  <strong>Flow &amp; Fragility Monitor</strong>
-                  <p>
-                    Tracks ETF flows, options skew, futures funding, OI resets, and on-chain liquidity to detect when markets shift from trend to fragility or from panic to opportunity.
-                  </p>
-                  <div class="badge-row">
-                    <span class="badge">ETF &amp; OI</span>
-                    <span class="badge">VOL SURFACES</span>
-                    <span class="badge">REGIME SHIFTS</span>
-                  </div>
-                </div>
-
-                <div class="service-item">
-                  <strong>Sentiment &amp; Narrative Diagnostics</strong>
-                  <p>
-                    Identifies when headlines, social narratives, and analyst commentary diverge from structural flows&mdash;a fertile zone for asymmetric entries and exits.
-                  </p>
-                  <div class="badge-row">
-                    <span class="badge">PERCEPTION vs REALITY</span>
-                    <span class="badge">DISLOCATION</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <aside class="services-card">
-              <div class="sc-head">Designed for sovereign-grade capital</div>
-              <div class="sc-main">
-                The objective is not to be early in every move, but to be
-                <span>decisively right</span> when the architecture of the cycle changes.
-              </div>
-              <div class="sc-metrics">
-                <div>
-                  <strong>Focus</strong>
-                  Regimes, not headlines. Liquidity, not anecdotes. Structure, not noise.
-                </div>
-                <div>
-                  <strong>Style</strong>
-                  Quiet presence. Minimal exposure. Maximum clarity for those who need it.
-                </div>
-              </div>
-            </aside>
-          </div>
-
-          <div class="insight-quote">
-            <p class="iq-body">
-              In a world where Bitcoin can crash on leverage, Ethereum can price out small users, Solana can congest, and stablecoins can wobble under reserve risk, <span>the edge is not choosing a winner</span>&mdash;it is engineering a sovereign routing strategy across all of them.
-            </p>
-            <div class="iq-meta">Quantum Edge &middot; Macro &amp; Digital Asset View</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Mandates -->
-      <section id="mandates">
-        <div class="shell">
-          <h2 class="section-title">Advisory Mandates</h2>
-          <p class="section-subtitle">
-            Engagements are selective, bespoke, and designed to complement existing CIO, investment committee, and risk teams&mdash;not to replace them.
-          </p>
-
-          <div class="pillars-grid">
-            <article class="pillar-card">
-              <div class="pillar-tag">01 &middot; Strategic Counsel</div>
-              <div class="pillar-title">Boardroom-level macro &amp; crypto guidance</div>
-              <p class="pillar-body">
-                Discreet sounding board for sovereign funds, family offices, and institutional allocators considering or expanding digital asset and Bitcoin exposure.
-              </p>
-            </article>
-            <article class="pillar-card">
-              <div class="pillar-tag">02 &middot; Regime &amp; Risk Mapping</div>
-              <div class="pillar-title">From event risk to structural understanding</div>
-              <p class="pillar-body">
-                Translating regulatory shocks, ETF flows, stablecoin stress, and cross-asset volatility into a coherent, cycle-aware capital allocation framework.
-              </p>
-            </article>
-            <article class="pillar-card">
-              <div class="pillar-tag">03 &middot; Discreet Research &amp; Briefings</div>
-              <div class="pillar-title">Private notes for serious capital</div>
-              <p class="pillar-body">
-                Tailored, high-signal briefings that reduce complexity into a few clear, defensible decisions&mdash;delivered quietly, with no marketing footprint.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- Contact -->
-      <section id="contact" class="contact">
-        <div class="shell">
-          <h2 class="section-title">Private Access</h2>
-          <p class="section-subtitle">
-            Quantum Edge is not a mass-market service. Access is limited and prioritised for long-horizon, aligned capital seeking structural clarity in an increasingly non-linear world.
-          </p>
-
-          <div class="contact-grid">
-            <div class="contact-card">
-              <h3>Discreet Enquiries</h3>
-              <p>
-                For HNWIs, Family Offices, institutional desks, and sovereign-linked entities exploring strategic advisory or bespoke intelligence, initial contact can be made via encrypted email.
-              </p>
-              <div class="contact-meta">Primary channel</div>
-              <a href="/cdn-cgi/l/email-protection#6f0c0e035b560e2f1f1d001b0001020e0603410c0002501c1a0d050a0c1b523e1a0e011b1a024a5d5f2a0b080a4a5d5f2a011e1a061d16" class="contact-link">
-                Contact: <span class="__cf_email__" data-cfemail="7714161b434e16370705180318191a161e1b5914181a">[email&#160;protected]</span>
-                <span>&#8599;</span>
-              </a>
-              <p class="contact-note">
-                Please include only high-level context. Detailed materials, if appropriate, can follow under mutual NDA and preferred secure channels.
-              </p>
-              <div class="contact-tags">
-                <div class="contact-tag">BITCOIN &amp; DIGITAL ASSETS</div>
-                <div class="contact-tag">MACRO &amp; LIQUIDITY</div>
-                <div class="contact-tag">RISK ARCHITECTURE</div>
-                <div class="contact-tag">FAMILY OFFICE / SOVEREIGN</div>
-              </div>
-            </div>
-
-            <div>
-              <div class="contact-meta">Engagement philosophy</div>
-              <p style="font-size:13px; color:var(--text-muted); margin-bottom:10px;">
-                Fewer relationships, deeper context, higher trust. The objective is not to predict every move, but to prevent unforced errors and position into structural opportunity before it becomes consensus.
-              </p>
-              <p style="font-size:12px; color:var(--text-soft);">
-                Capital that survives the next regime will be that which understands how Bitcoin, stablecoins, AI, regulation, and human behavior intersect. Quantum Edge exists to read that intersection early&mdash;and quietly.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-      <div class="shell">
-        <div class="footer-inner">
-          <span>&copy; <span id="year"></span> Quantum Edge &middot; All Rights Reserved</span>
-          <div class="footer-links">
-            <a href="#top">Back to top</a>
-            <a href="#model">Framework</a>
-            <a href="#contact">Private Access</a>
-          </div>
-        </div>
-      </div>
-    </footer>
-  </div>
-
-  <title>Floating Market Feed</title>
-
-<style>
-:root {
-  --bg: #0c0f14;
-  --card: #121722;
-  --text: #d6e0ff;
-  --bull: #00c896;
-  --bear: #ff4d4f;
-}
-
-/* ── Dock Container ───────────────────────── */
-.news-dock {
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
-  z-index: 9999;
-
-  width: 320px;
-  max-height: 420px;
-
-  background: var(--bg);
-  color: var(--text);
-  border-radius: 12px;
-
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-
-  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-}
-
-/* ── Header ───────────────────────── */
-.news-dock-header {
-  display: flex;
-  justify-content: space-between;
-  padding: 8px 10px;
-  background: var(--card);
-  font-size: 12px;
-}
-
-.news-dock-title-main {
-  font-weight: bold;
-}
-
-.dock-collapse-btn {
-  background: none;
-  border: none;
-  color: var(--text);
-  cursor: pointer;
-}
-
-/* ── Body ───────────────────────── */
-.dock-body {
-  overflow-y: auto;
-}
-
-.news-item {
-  padding: 8px 10px;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-}
-
-.news-title {
-  font-family: monospace;
-  font-size: 14px;
-}
-
-.news-summary {
-  font-size: 10px;
-  opacity: 0.7;
-}
-
-/* ── Footer ───────────────────────── */
-.dock-footer {
-  padding: 6px 10px;
-  font-size: 10px;
-  background: var(--card);
-}
-
-/* ── Minimized ───────────────────────── */
-.news-dock-minimized {
-  max-height: 42px !important;
-  overflow: hidden;
-}
-
-/* ── MOBILE MODE ───────────────────────── */
-@media (max-width: 768px) {
-  .news-dock {
-    width: 92vw;
-    left: 4vw;
-    right: 4vw;
-    bottom: 8px;
-
-    max-height: 10vh; /* KEY CONSTRAINT */
-  }
-
-  .dock-body {
-    display: flex;
-    flex-direction: row;
-    overflow-x: auto;
-    overflow-y: hidden;
-    gap: 8px;
-    padding: 6px;
-
-    scroll-snap-type: x mandatory;
-  }
-
-  .news-item {
-    min-width: 150px;
-    border: none;
-    background: var(--card);
-    border-radius: 8px;
-
-    scroll-snap-align: start;
-  }
-
-  .news-title {
-    font-size: 11px;
-  }
-
-  .news-summary,
-  .dock-footer {
-    display: none;
-  }
-}
-</style>
-</head>
-
-<body>
-
-<!-- ── FLOATING DOCK ───────────────────────── -->
-<div class="news-dock" id="newsDock">
-  <div class="news-dock-header">
-    <div>
-      <div class="news-dock-title-main">Live Feed</div>
-      <div id="lastUpdated" style="font-size:10px;">Loading…</div>
+        <a href="#contact" class="nav-cta">PRIVATE ACCESS <span>&#8599;</span></a>
+      </nav>
     </div>
-    <button class="dock-collapse-btn" id="dockCollapseBtn">Minimise</button>
+  </header>
+
+  <main>
+    <section class="hero" id="top">
+      <div class="shell">
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow">Discreet Macro &amp; Digital-Asset Intelligence</div>
+            <div class="eyebrow">Mr. Paul Singh, Founder</div>
+            <div class="eyebrow">Chief Asymmetric Strategy Architect (CASA)</div>
+            <div class="eyebrow">DIFC, Dubai. UAE</div>
+            <h1 class="hero-title">Sovereign-grade insight<br/>for <span>asymmetric capital</span></h1>
+            <p class="hero-subtitle">Quantum Intellectual Thinking navigating Bitcoin, digital assets, and macro regimes using non-linear reasoning, behavioral signals, and deep risk intelligence.</p>
+            <div class="hero-pills">
+              <div class="pill"><div class="pill-dot"></div>Intelligence Perspective</div>
+              <div class="pill"><div class="pill-dot"></div>Multi-asset, crypto-native intelligence</div>
+              <div class="pill"><div class="pill-dot"></div>Narrative, flow &amp; structure alignment</div>
+            </div>
+            <div class="hero-meta">
+              <div><strong>Mandate</strong>Strategic advisory across Bitcoin, digital assets, macro &amp; liquidity regimes.</div>
+              <div><strong>Operating Style</strong>Early pattern recognition. Quiet positioning. Institutional discipline.</div>
+            </div>
+          </div>
+          <aside class="hero-card">
+            <div class="hero-card-inner">
+              <div class="hc-label">Quantum Edge Working Model</div>
+              <div class="hc-main">Where others see <span>volatility</span>, we see the architecture of <span>regime change</span>.</div>
+              <div class="hc-grid">
+                <div class="hc-item"><strong>Asymmetry Engine</strong>Identifies non-linear payoff zones across BTC, ETH, SOL, stablecoins &amp; macro.</div>
+                <div class="hc-item"><strong>Risk Cartography</strong>Maps liquidity, leverage, and regulatory stress to build sovereign-grade resilience.</div>
+                <div class="hc-item"><strong>Perception Layer</strong>Tracks sentiment dislocations between retail narratives and institutional flow.</div>
+                <div class="hc-item"><strong>Timing Lens</strong>Focuses on second-order effects where consensus arrives last and returns are made.</div>
+              </div>
+              <div class="hc-seal">QUIET<br/>ADVANTAGE</div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="shell">
+        <h2 class="section-title">Strategic Pillars</h2>
+        <p class="section-subtitle">Quantum Edge operates at the intersection of macro, digital assets, and human behavior. The mandate is simple: protect and compound sophisticated capital through structural clarity, not noise.</p>
+        <div class="pillars-grid">
+          <article class="pillar-card">
+            <div class="pillar-halo"></div>
+            <div class="pillar-tag">01 &middot; Strategic Asymmetry</div>
+            <div class="pillar-title">Edges where others see failure</div>
+            <p class="pillar-body">We treat slow Bitcoin, high ETH gas, congested Solana and fragile stablecoins not as flaws, but as signal-rich stress points. Asymmetry appears where infrastructure strain meets structural adoption.</p>
+          </article>
+          <article class="pillar-card">
+            <div class="pillar-tag">02 &middot; Timing &amp; Second-Order Effects</div>
+            <div class="pillar-title">Positioning before the narrative</div>
+            <p class="pillar-body">We don&rsquo;t chase &ldquo;what just happened.&rdquo; We map how liquidity, regulation, and institutional flows will react next and how those reactions will be mispriced by conventional models.</p>
+          </article>
+          <article class="pillar-card">
+            <div class="pillar-tag">03 &middot; Psychology of Capital</div>
+            <div class="pillar-title">Understanding how money feels</div>
+            <p class="pillar-body">HNWI, Family Offices, and Institutions don&rsquo;t move on spreadsheets alone. They move on fear, pride, reputational risk and opportunity cost. We translate this psychology into positioning decisions.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="model" class="services">
+      <div class="shell">
+        <h2 class="section-title">Quantum Edge Framework</h2>
+        <p class="section-subtitle">A working model designed for sovereign funds and serious allocators: one that integrates macro, digital assets, and behavioral signals into a single, coherent decision architecture.</p>
+        <div class="services-grid">
+          <div>
+            <div class="service-list">
+              <div class="service-item">
+                <strong>Multi-Layer Market Map</strong>
+                <p>Bitcoin as apex collateral. Ethereum as settlement &amp; structure. Solana &amp; BNB as execution rails. Stablecoins and USDT risk as liquidity weather.</p>
+                <div class="badge-row"><span class="badge">BTC / ETH / SOL / BNB</span><span class="badge">STABLECOIN RISK</span></div>
+              </div>
+              <div class="service-item">
+                <strong>Flow &amp; Fragility Monitor</strong>
+                <p>Tracks ETF flows, options skew, futures funding, OI resets, and on-chain liquidity to detect when markets shift from trend to fragility or from panic to opportunity.</p>
+                <div class="badge-row"><span class="badge">ETF &amp; OI</span><span class="badge">VOL SURFACES</span><span class="badge">REGIME SHIFTS</span></div>
+              </div>
+              <div class="service-item">
+                <strong>Sentiment &amp; Narrative Diagnostics</strong>
+                <p>Identifies when headlines, social narratives, and analyst commentary diverge from structural flows&mdash;a fertile zone for asymmetric entries and exits.</p>
+                <div class="badge-row"><span class="badge">PERCEPTION vs REALITY</span><span class="badge">DISLOCATION</span></div>
+              </div>
+            </div>
+          </div>
+          <aside class="services-card">
+            <div class="sc-head">Designed for sovereign-grade capital</div>
+            <div class="sc-main">The objective is not to be early in every move, but to be <span>decisively right</span> when the architecture of the cycle changes.</div>
+            <div class="sc-metrics">
+              <div><strong>Focus</strong>Regimes, not headlines. Liquidity, not anecdotes. Structure, not noise.</div>
+              <div><strong>Style</strong>Quiet presence. Minimal exposure. Maximum clarity for those who need it.</div>
+            </div>
+          </aside>
+        </div>
+        <div class="insight-quote">
+          <p class="iq-body">In a world where Bitcoin can crash on leverage, Ethereum can price out small users, Solana can congest, and stablecoins can wobble under reserve risk, <span>the edge is not choosing a winner</span>&mdash;it is engineering a sovereign routing strategy across all of them.</p>
+          <div class="iq-meta">Quantum Edge &middot; Macro &amp; Digital Asset View</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="mandates">
+      <div class="shell">
+        <h2 class="section-title">Advisory Mandates</h2>
+        <p class="section-subtitle">Engagements are selective, bespoke, and designed to complement existing CIO, investment committee, and risk teams&mdash;not to replace them.</p>
+        <div class="pillars-grid">
+          <article class="pillar-card">
+            <div class="pillar-tag">01 &middot; Strategic Counsel</div>
+            <div class="pillar-title">Boardroom-level macro &amp; crypto guidance</div>
+            <p class="pillar-body">Discreet sounding board for sovereign funds, family offices, and institutional allocators considering or expanding digital asset and Bitcoin exposure.</p>
+          </article>
+          <article class="pillar-card">
+            <div class="pillar-tag">02 &middot; Regime &amp; Risk Mapping</div>
+            <div class="pillar-title">From event risk to structural understanding</div>
+            <p class="pillar-body">Translating regulatory shocks, ETF flows, stablecoin stress, and cross-asset volatility into a coherent, cycle-aware capital allocation framework.</p>
+          </article>
+          <article class="pillar-card">
+            <div class="pillar-tag">03 &middot; Discreet Research &amp; Briefings</div>
+            <div class="pillar-title">Private notes for serious capital</div>
+            <p class="pillar-body">Tailored, high-signal briefings that reduce complexity into a few clear, defensible decisions&mdash;delivered quietly, with no marketing footprint.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="shell">
+        <h2 class="section-title">Private Access</h2>
+        <p class="section-subtitle">Quantum Edge is not a mass-market service. Access is limited and prioritised for long-horizon, aligned capital seeking structural clarity in an increasingly non-linear world.</p>
+        <div class="contact-grid">
+          <div class="contact-card">
+            <h3>Discreet Enquiries</h3>
+            <p>For HNWIs, Family Offices, institutional desks, and sovereign-linked entities exploring strategic advisory or bespoke intelligence, initial contact can be made via encrypted email.</p>
+            <div class="contact-meta">Primary channel</div>
+            <!-- Email address hidden from display. Clicking opens mail app directly. -->
+            <a href="mailto:cal49a@pm.me?subject=Quantum%20Edge%20Enquiry" class="contact-link">
+              Send Secure Enquiry <span>&#8599;</span>
+            </a>
+            <p class="contact-note">Please include only high-level context. Detailed materials, if appropriate, can follow under mutual NDA and preferred secure channels.</p>
+            <div class="contact-tags">
+              <div class="contact-tag">BITCOIN &amp; DIGITAL ASSETS</div>
+              <div class="contact-tag">MACRO &amp; LIQUIDITY</div>
+              <div class="contact-tag">RISK ARCHITECTURE</div>
+              <div class="contact-tag">FAMILY OFFICE / SOVEREIGN</div>
+            </div>
+          </div>
+          <div>
+            <div class="contact-meta">Engagement philosophy</div>
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:10px;">Fewer relationships, deeper context, higher trust. The objective is not to predict every move, but to prevent unforced errors and position into structural opportunity before it becomes consensus.</p>
+            <p style="font-size:12px;color:var(--text-soft);">Capital that survives the next regime will be that which understands how Bitcoin, stablecoins, AI, regulation, and human behavior intersect. Quantum Edge exists to read that intersection early&mdash;and quietly.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell">
+      <div class="footer-inner">
+        <span>&copy; <span id="year"></span> Quantum Edge &middot; All Rights Reserved</span>
+        <div class="footer-links">
+          <a href="#top">Back to top</a>
+          <a href="#model">Framework</a>
+          <a href="#contact">Private Access</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ====================================================
+     FLOATING INTELLIGENCE DOCK
+     Default: COLLAPSED (42px slim bar only)
+     Click header to expand. Mobile: horizontal ticker strip.
+===================================================== -->
+<div class="news-dock" id="newsDock">
+
+  <div class="news-dock-header" id="dockHeader">
+    <div class="dock-title-group">
+      <div class="dock-live-dot"></div>
+      <div class="dock-title-text">
+        <div class="dock-title-main">Live Intelligence</div>
+        <div class="dock-title-sub" id="lastUpdated">Tap to expand &middot; Binance Live</div>
+      </div>
+    </div>
+    <div class="dock-chevron">&#9650;</div>
   </div>
 
+  <!-- Mobile only: compact ticker strip visible even when collapsed -->
+  <div class="dock-ticker" id="dockTicker"></div>
+
+  <!-- Full feed — only rendered when expanded -->
   <div class="dock-body" id="priceFeed">
-    <div class="news-item">Loading...</div>
+    <div style="text-align:center;color:var(--text-soft);font-size:11px;padding:18px 10px;">Loading sovereign flows&hellip;</div>
   </div>
 
   <div class="dock-footer">
-    Binance API • <span id="refreshTimer">30s</span>
+    <span>Binance API &middot; Macro overlay &middot; QE</span>
+    <span id="refreshTimer">Next sync: 30s</span>
   </div>
 </div>
 
-<!-- ── SCRIPT ───────────────────────── -->
 <script>
-const symbols = ['BTCUSDT','ETHUSDT','SOLUSDT','BNBUSDT','XRPUSDT'];
-let timeLeft = 30;
+  document.getElementById('year').textContent = new Date().getFullYear();
 
-/* Detect mobile */
-function isMobile() {
-  return window.innerWidth <= 768;
-}
+  // ── Dock toggle ──────────────────────────────────────
+  var dock       = document.getElementById('newsDock');
+  var dockHeader = document.getElementById('dockHeader');
+  var lastUpEl   = document.getElementById('lastUpdated');
 
-/* Fetch data */
-async function fetchPrices() {
-  try {
-    const url = 'https://api.binance.com/api/v3/ticker/24hr?symbols=' + JSON.stringify(symbols);
-    const res = await fetch(url);
-    const data = await res.json();
-
-    renderPrices(data);
-    updateTimestamp();
-    timeLeft = 30;
-
-  } catch (e) {
-    document.getElementById('priceFeed').innerHTML =
-      '<div class="news-item" style="color:red">Reconnecting...</div>';
-  }
-}
-
-/* Render UI */
-function renderPrices(data) {
-  const feed = document.getElementById('priceFeed');
-  feed.innerHTML = '';
-
-  const mobile = isMobile();
-
-  data.forEach(item => {
-    const symbol = item.symbol.replace('USDT','');
-    const price  = parseFloat(item.lastPrice).toFixed(2);
-    const change = parseFloat(item.priceChangePercent);
-    const isUp   = change >= 0;
-
-    const color = isUp ? 'var(--bull)' : 'var(--bear)';
-    const chg   = (isUp ? '+' : '') + change.toFixed(2) + '%';
-
-    feed.innerHTML += `
-      <div class="news-item">
-        <div>${symbol}</div>
-        <div class="news-title">
-          $${price}
-          <span style="color:${color}">${chg}</span>
-        </div>
-        ${
-          mobile ? '' :
-          `<div class="news-summary">
-            H: ${parseFloat(item.highPrice).toFixed(2)} |
-            L: ${parseFloat(item.lowPrice).toFixed(2)}
-          </div>`
-        }
-      </div>
-    `;
+  dockHeader.addEventListener('click', function() {
+    dock.classList.toggle('dock-expanded');
+    lastUpEl.textContent = dock.classList.contains('dock-expanded')
+      ? 'Binance Live \u00B7 Quantum Edge'
+      : 'Tap to expand \u00B7 Binance Live';
   });
-}
 
-/* Timestamp */
-function updateTimestamp() {
-  document.getElementById('lastUpdated').innerText =
-    'Updated: ' + new Date().toLocaleTimeString();
-}
+  // ── Data ─────────────────────────────────────────────
+  var CRYPTO_SYMBOLS = ['BTCUSDT','ETHUSDT','SOLUSDT','BNBUSDT','XRPUSDT'];
+  var timeLeft = 30;
 
-/* Timer */
-function startTimer() {
-  setInterval(() => {
-    timeLeft--;
-    document.getElementById('refreshTimer').innerText = timeLeft + 's';
+  function getSentiment(change) {
+    if (change >= 2)  return {label:'Strength',   cls:'sentiment-bull', regime:'Expansion'};
+    if (change <= -2) return {label:'Compression', cls:'sentiment-bear', regime:'Absorption'};
+    return                   {label:'Neutral',     cls:'sentiment-neutral',regime:'Consolidation'};
+  }
 
-    if (timeLeft <= 0) fetchPrices();
-  }, 1000);
-}
+  function fmtPrice(p, dp) {
+    return parseFloat(p).toLocaleString(undefined, {minimumFractionDigits:dp||2, maximumFractionDigits:dp||2});
+  }
 
-/* Toggle */
-function toggleDock() {
-  const dock = document.getElementById('newsDock');
-  const btn  = document.getElementById('dockCollapseBtn');
+  // Render full expanded cards
+  function renderFull(data, goldPrice) {
+    var feed = document.getElementById('priceFeed');
+    var html = '<div class="feed-section-label">&#9679; Crypto Flows &mdash; Binance Live</div>';
 
-  dock.classList.toggle('news-dock-minimized');
-  btn.innerText = dock.classList.contains('news-dock-minimized')
-    ? 'Expand'
-    : 'Minimise';
-}
+    data.forEach(function(item) {
+      var sym    = item.symbol.replace('USDT','');
+      var price  = parseFloat(item.lastPrice);
+      var change = parseFloat(item.priceChangePercent);
+      var high   = fmtPrice(item.highPrice);
+      var low    = fmtPrice(item.lowPrice);
+      var vol    = (parseFloat(item.quoteVolume)/1e6).toFixed(0);
+      var s      = getSentiment(change);
+      var chgStr = (change>=0?'+':'')+change.toFixed(2)+'%';
+      var chgCol = change>=0?'var(--bull)':'var(--bear)';
+      var pStr   = price>=1000 ? '$'+Math.round(price).toLocaleString() : '$'+fmtPrice(price);
 
-document.getElementById('dockCollapseBtn').addEventListener('click', toggleDock);
+      html += '<div class="news-item">' +
+        '<div class="news-item-header">' +
+          '<span class="news-source">'+sym+' / USDT</span>' +
+          '<div class="sentiment-pill '+s.cls+'"><div class="sentiment-dot"></div>'+s.label+'</div>' +
+        '</div>' +
+        '<div class="news-title">'+pStr+' <span style="color:'+chgCol+';font-size:10px;">'+chgStr+'</span></div>' +
+        '<div class="news-summary">H: $'+high+' &nbsp;|&nbsp; L: $'+low+' &nbsp;|&nbsp; Vol: $'+vol+'M</div>' +
+        '<div class="news-tag-asset">Liquidity Regime: '+s.regime+'</div>' +
+      '</div>';
+    });
 
-/* Boot */
-fetchPrices();
-startTimer();
+    // Macro overlay section
+    html += '<div class="feed-section-label" style="margin-top:6px;">&#9679; Macro Overlay</div>';
+
+    var btcItem = data.find(function(d){return d.symbol==='BTCUSDT';});
+    var ethItem = data.find(function(d){return d.symbol==='ETHUSDT';});
+    var btcChg  = btcItem ? parseFloat(btcItem.priceChangePercent) : 0;
+    var ethChg  = ethItem ? parseFloat(ethItem.priceChangePercent) : 0;
+    var avgChg  = (btcChg + ethChg) / 2;
+    var regime  = avgChg > 0.5 ? 'Risk-On' : avgChg < -0.5 ? 'Risk-Off' : 'Neutral';
+    var regCls  = regime==='Risk-On' ? 'sentiment-bull' : regime==='Risk-Off' ? 'sentiment-bear' : 'sentiment-neutral';
+
+    var totalVol = data.reduce(function(s,d){return s+parseFloat(d.quoteVolume);},0);
+    var btcVol   = btcItem ? parseFloat(btcItem.quoteVolume) : 0;
+    var dom      = totalVol>0 ? (btcVol/totalVol*100).toFixed(1) : '-';
+
+    html += '<div class="news-item">' +
+      '<div class="news-item-header"><span class="news-source">Market Regime</span>' +
+        '<div class="sentiment-pill '+regCls+'"><div class="sentiment-dot"></div>'+regime+'</div>' +
+      '</div>' +
+      '<div class="news-title" style="font-size:11px;">BTC Vol Dominance: '+dom+'%</div>' +
+      '<div class="news-summary">BTC '+(btcChg>=0?'+':'')+btcChg.toFixed(2)+'% &nbsp;|&nbsp; ETH '+(ethChg>=0?'+':'')+ethChg.toFixed(2)+'%</div>' +
+      '<div class="news-tag-asset">Composite regime read &middot; Quantum Edge</div>' +
+    '</div>';
+
+    if (goldPrice) {
+      var gStr   = fmtPrice(goldPrice, 2);
+      var gCls   = avgChg < -1 ? 'sentiment-bull' : 'sentiment-neutral';
+      var gLabel = avgChg < -1 ? 'Safe Haven' : 'Neutral';
+      html += '<div class="news-item">' +
+        '<div class="news-item-header"><span class="news-source">XAU / USD &middot; Gold</span>' +
+          '<div class="sentiment-pill '+gCls+'"><div class="sentiment-dot"></div>'+gLabel+'</div>' +
+        '</div>' +
+        '<div class="news-title">$'+gStr+' / oz</div>' +
+        '<div class="news-summary">Cross-asset hedge reference &middot; real-time</div>' +
+        '<div class="news-tag-asset">Macro signal &middot; Quantum Edge overlay</div>' +
+      '</div>';
+    }
+
+    feed.innerHTML = html;
+  }
+
+  // Mobile ticker strip
+  function renderTicker(data) {
+    var ticker = document.getElementById('dockTicker');
+    if (!ticker) return;
+    var html = '';
+    data.forEach(function(item) {
+      var sym    = item.symbol.replace('USDT','');
+      var price  = parseFloat(item.lastPrice);
+      var change = parseFloat(item.priceChangePercent);
+      var chgStr = (change>=0?'+':'')+change.toFixed(1)+'%';
+      var chgCol = change>=0?'var(--bull)':'var(--bear)';
+      var pStr   = price>=1000 ? '$'+Math.round(price).toLocaleString() : '$'+fmtPrice(price);
+      html += '<div class="ticker-item"><span>'+sym+'</span><span class="ticker-price">'+pStr+'</span><span class="ticker-chg" style="color:'+chgCol+'">'+chgStr+'</span></div>';
+    });
+    ticker.innerHTML = html;
+  }
+
+  // Fetch gold from Frankfurter (free, no key, CORS-open)
+  async function fetchGold() {
+    try {
+      var r = await fetch('https://api.frankfurter.app/latest?from=XAU&to=USD');
+      if (!r.ok) return null;
+      var d = await r.json();
+      return (d.rates && d.rates.USD) ? d.rates.USD : null;
+    } catch(e) { return null; }
+  }
+
+  // Main fetch
+  async function fetchPrices() {
+    try {
+      var url = 'https://api.binance.com/api/v3/ticker/24hr?symbols=' + JSON.stringify(CRYPTO_SYMBOLS);
+      var [cryptoRes, goldPrice] = await Promise.all([fetch(url), fetchGold()]);
+      if (!cryptoRes.ok) throw new Error('Binance HTTP ' + cryptoRes.status);
+      var data = await cryptoRes.json();
+
+      renderFull(data, goldPrice);
+      renderTicker(data);
+
+      var t = new Date().toLocaleTimeString();
+      if (dock.classList.contains('dock-expanded')) {
+        lastUpEl.textContent = 'Verified: ' + t;
+      }
+      timeLeft = 30;
+    } catch(e) {
+      console.error('Feed error:', e.message);
+      document.getElementById('priceFeed').innerHTML =
+        '<div style="text-align:center;color:var(--danger);font-size:11px;padding:16px;">Stream reconnecting\u2026</div>';
+    }
+  }
+
+  function startTimer() {
+    setInterval(function() {
+      timeLeft = Math.max(0, timeLeft-1);
+      var el = document.getElementById('refreshTimer');
+      if (el) el.textContent = 'Next sync: '+timeLeft+'s';
+      if (timeLeft <= 0) fetchPrices();
+    }, 1000);
+  }
+
+  fetchPrices();
+  startTimer();
 </script>
-
 </body>
 </html>
